@@ -1,0 +1,20 @@
+<%- include('header') %>
+<%= success %>
+<%= error %>
+这是主页
+<% if (user) { %>
+ hello~ <%= user.name %>
+ <a class="item" href="/signout">登出</a>
+ <a class="item" href="/news/create">发表新闻</a>
+  <% } else { %>
+  <a class="item" href="/signin">登录</a>
+          <a class="item" href="/signup">注册</a>
+  <% } %>
+
+  <% newses.forEach(function (news) {
+  	if (news.permission === 'y') {  %>
+  <%- include('components/news-content', {news: news}) %>
+<% }  
+}) %>
+
+<%- include('footer') %>

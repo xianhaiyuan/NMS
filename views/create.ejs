@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<div class="ui grid">
+  <div class="four wide column">
+    <a class="avatar"
+       href="/news?author_id=<%= user._id %>"
+       data-title="<%= user.name %> | <%= ({m: '男', f: '女', x: '保密'})[user.gender] %>"
+       data-content="<%= user.resume %>">
+      <img class="avatar" src="/img/<%= user.avatar %>">
+    </a>
+  </div>
+
+  <div class="eight wide column">
+    <form class="ui form segment" method="post" action="/news" enctype="multipart/form-data">
+      <div class="field required">
+        <label>标题</label>
+        <input type="text" name="title">
+      </div>
+      <div class="field required">
+        <label>性别</label>
+        <select class="ui compact selection dropdown" name="categories">
+        <option value="top-stories">头条</option>
+          <option value="polity">政事</option>
+          <option value="sport">体育</option>
+          <option value="entertain">娱乐</option>
+          <option value="financial">金融</option>
+          <option value="fashion">时尚</option>
+          <option value="cars">汽车</option>
+          <option value="h-property">房产</option>
+          <option value="technology">科技</option>
+          <option value="games">游戏</option>
+        </select>
+      </div>
+      <div class="field required">
+        <label>内容</label>
+        <textarea name="content" rows="15"></textarea>
+      </div>
+      <div class="field required">
+        <label>新闻图片</label>
+        <input type="file" name="news_pic">
+      </div>
+      <input type="submit" class="ui button" value="发布">
+    </div>
+  </form>
+</div>
+
+<%- include('footer') %>
