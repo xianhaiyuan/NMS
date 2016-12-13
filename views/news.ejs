@@ -1,4 +1,6 @@
 <%- include('header') %>
+</head>
+<body>
 <%= success %>
 <%= error %>
 这是主页
@@ -8,7 +10,7 @@
  <a class="item" href="/news/create">发表新闻</a>
   <% } else { %>
   <a class="item" href="/signin">登录</a>
-          <a class="item" href="/signup">注册</a>
+   <a class="item" href="/signup">注册</a>
   <% } %>
 
   <% newses.forEach(function (news) {
@@ -16,5 +18,157 @@
   <%- include('components/news-content', {news: news}) %>
 <% }  
 }) %>
+
+
+	<div class="i_head clearfix">
+		<div class="i_logo">
+			<a href="/news" class="i_logo_pic"></a>
+		</div>
+		<div class="i_head_rig">
+			<% if (user) { %>
+				<div class="ui dropdown">
+			 	<div class="iconfont">&#xf00cc;</div>
+				  <div class="menu">
+				    <a href="" class="item">提交文章</a>
+				    <a href="/news" class="item">我的文章</a>
+				    <a href="/signout" class="item"> 退出登录 </a>
+				  </div>
+				</div>
+				<% }else{  %>
+			 <a href="/signin" class="iconfont">&#xe6a0;</a> 
+			<% } %>
+		</div>
+			
+	</div>
+	<div class="i_nav">
+		<div class="i_nav_list">
+			<a href="">新闻</a>
+			<a href="">政事</a>
+			<a href="">体育</a>
+			<a href="">娱乐</a>
+			<a href="">金融</a>
+			<a href="">时尚</a>
+		</div>
+		<div class="i_nav_list">
+			<a href="">汽车</a>
+			<a href="">房产</a>
+			<a href="">科技</a>
+			<a href="">游戏</a>
+			<a href="">社会</a>
+			<a href="">购物</a>
+		</div>
+	</div>
+	<div class="i_search">
+		<form action="" name="search_news"></form>
+		<div class="ui search">
+		  <div class="ui icon input">
+		    <input class="prompt" type="text" placeholder="Search countries..." form="search_news">
+		    <a class="search_icon icon iconfont">&#xe618;</a>
+		  </div>
+		  <div class="results"></div>
+		</div>
+	</div>
+	<div class="i_slide">
+		<div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
+			<ul>
+				<li><a href=""><img src="img/1.jpg" alt="八旬老人辛酸度日，每年儿子只给50元。" /></a></li>
+				<li><a href=""><img src="img/2.jpg" alt="养殖场被强拆，上千头猪满山跑" /></a></li>
+				<li><a href=""><img src="img/3.jpg" alt="这位泰国女神还在读高中，性别男。" /></a></li>
+				<li><a href=""><img src="img/4.jpg" alt="他是下一个姚明？身高有2米16" /></a></li>
+				<li><a href=""><img src="img/5.jpg" alt="全自由沙盘战争，不一样的乱世三国" /></a></li>
+				<% newses.forEach(function (news) {
+				  	if (news.permission === 'y' && news.categories === 'sport' && news.weight === 1) {  %>
+				  	<li>
+				  	<a href="/news/<%= news._id %>"><img src="/img/<%=news.news_pic %>" alt="<%= news.title %>" />
+				  	</a>
+				  	</li>
+				<% }  
+				}) %>
+			</ul>
+		</div>
+	</div>
+	<div class="i_topStories">
+		<div class="i_topStories_tit clearfix">
+			<h2>今日要闻</h2>
+			<p>
+				<a href="">更多</a>
+			</p>
+		</div>
+		<div class="i_topStories_tab">
+			<ul>
+				<% newses.forEach(function (news) {
+				  	if (news.permission === 'y' && news.categories === 'top-stories') {  %>
+				  <%- include('components/news-content', {news: news}) %>
+				<% }  
+				}) %>
+			</ul>
+		</div>
+	</div>
+	<div class="i_section">
+		<div class="i_section_tit clearfix">
+			<h2>体育</h2>
+			<p>
+				<a href="">更多</a>
+			</p>
+		</div>
+		<div class="i_section_tab">
+			<ul>
+				<% newses.forEach(function (news) {
+				  	if (news.permission === 'y' && news.categories === 'sport') {  %>
+				  <%- include('components/news-content', {news: news}) %>
+				<% }  
+				}) %>
+			</ul>
+		</div>
+	</div>
+	<div class="i_lifeAd">
+		<div class="i_lifeAd_tit clearfix">
+			<h2>
+				生活服务
+			</h2>
+		</div>
+		<div class="i_lifeAd_list">
+			<div class="i_lifeAd_list_row i_lifeAd_row_1">
+				<a href="">找工作</a>
+				<a href="">租好车</a>
+				<a href="">找维修</a>
+				<a href="">找投资</a>
+				<a href="">二手房</a>
+				
+			</div>
+			<div class="i_lifeAd_list_row i_lifeAd_row_2">
+				<a href="">找搬家</a>
+				<a href="">租好房</a>
+				<a href="">二手车</a>
+				<a href="">淘手机</a>
+				<a href="">找保洁</a>
+			</div>
+		</div>
+	</div>
+	<div class="i_more">
+		<div class="i_more_tit clearfix">
+			<h2>更多推荐</h2>
+		</div>
+		<div class="i_more_list">
+			<div class="i_more_list_row">
+				<a href="">京东</a>
+				<a href="">淘宝</a>
+				<a href="">充值</a>
+				<a href="">彩票</a>
+				<a href="">游戏</a>
+				<a href="">保镖</a>
+			</div>
+			<div class="i_more_list_row">
+				<a href="">滴滴</a>
+				<a href="">会员</a>
+				<a href="">邮箱</a>
+				<a href="">小说</a>
+				<a href="">空间</a>
+				<a href="">博客</a>
+			</div>
+		</div>
+	</div>
+	
+
 
 <%- include('footer') %>

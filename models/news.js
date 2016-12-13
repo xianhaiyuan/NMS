@@ -64,6 +64,17 @@ module.exports = {
 		.contentToHtml()
 		.exec();
 	},
+	getNewsByType_limit_8: function getNewsByType_limit_8(categories){
+		var query = {};
+		query.categories = categories;
+		return News
+		.find(query)
+		.limit(8)
+		.populate({path: 'author_id', model: 'User'})
+		.addCreatedAt()
+		.contentToHtml()
+		.exec();
+	},
 	incPv: function incPv(newsid){
 		return News
 		.update({_id: newsid}, {$inc: {pv: 1}})

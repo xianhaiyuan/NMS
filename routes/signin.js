@@ -11,17 +11,21 @@ router.get('/' ,checkNotLogin, function(req, res, next){
 router.post('/' , checkNotLogin, function(req, res, next){
 	var username = req.fields.username;
 	var password = req.fields.password;
+	console.log(username+","+password);
 	userModel.getUserByName(username)
 	.then(function(user){
+		if (password === ""){
+			return res.send({err: '请输入密码!'});
+		}
 		if (user[0] === undefined) {
 			// req.flash('error', '用户不存在');
 			// return res.redirect('back');
-			return res.send({err: '用户不存在'});
+			return res.send({err: '用户不存在!'});
 		}
 		if (sha1(password) !== user[0].password) {
 			// req.flash('error', '用户名或密码错误');
 			// return res.redirect('back');
-			return res.send({err: '用户名或密码错误'});
+			return res.send({err: '用户名或密码错误!'});
 		}
 		req.flash('success', '登录成功');
 		delete user[0].password;

@@ -16,7 +16,7 @@ router.post('/' ,checkNotLogin, function(req, res, next){
 	var password = req.fields.password;
 	var repassword = req.fields.repassword;
 	var privilege = 'user';
-	
+	console.log(name);
 
 	try{
 		if (!(username.length >= 1 && username.length <=10)){
@@ -42,6 +42,7 @@ router.post('/' ,checkNotLogin, function(req, res, next){
    		}
 	}catch (e) {
 		req.flash('error', e.message);
+		console.log(e.message);
 		return res.redirect('/signup');
 	}
 

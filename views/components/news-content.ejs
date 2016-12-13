@@ -1,4 +1,4 @@
-  标题:<a href='/news/<%= news._id %>' ><%= news.title %></a>
+  <!-- 标题:<a href='/news/<%= news._id %>' ><%= news.title %></a>
   <% if (/(\.gif)|(\.jpg)|(\.png)/.test(news.news_pic)) { %>
   <img class="news_pic" src="/img/<%=news.news_pic %>">
   <% } %>
@@ -9,14 +9,33 @@
   <span>resume:<%= news.author_id.resume %></span>
 
   <% if (user && news.author_id._id && user._id.toString() === news.author_id._id.toString()) { %>
-              <div class="ui inline dropdown">
-                <div class="text"></div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                  <div class="item"><a href="/news/<%= news._id %>/edit">编辑</a></div>
-                  <div class="item"><a href="/news/<%= news._id %>/remove">删除</a></div>
-                </div>
-              </div>
+ 
+                  <span class=""><a href="/news/<%= news._id %>/edit">编辑</a></span>
+                  <span class=""><a href="/news/<%= news._id %>/remove">删除</a></span>
+ 
             <% } %>
 
   <img class="avatar" src="/img/<%=news.author_id.avatar %>">
+  -->
+
+  <li>
+          <a href="/news/<%= news._id %>">
+            <div class="tab_lef">
+              <h3>
+                <%= news.title %>
+              </h3>
+              <p>
+                <%= news.publish_house %>
+                <span class="iconfont">
+                  &#xe639;(<%= news.pv %>)
+                </span>
+              </p>
+            </div>
+            <div class="tab_rig">
+              <% if (/(\.gif)|(\.jpg)|(\.png)/.test(news.news_pic)) { %>
+                 <img class="news_pic" src="/img/<%=news.news_pic %>">
+              <% } %>
+            </div>
+          </a>
+        </li>
+        <hr>

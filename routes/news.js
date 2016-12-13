@@ -6,7 +6,7 @@ var checkLogin = require('../middlewares/check').checkLogin;
 var path = require('path');
 router.get('/', function(req, res, next){// GET /news 所有用户或者特定用户的新闻页
 	var author_id = req.query.author_id;
-
+	//此处可以跳转到某个用户的文章
 	PostModel.getNewses(author_id)
 	.then(function(newses){
 		res.render('news', {
@@ -23,7 +23,7 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 	var categories = req.fields.categories;
 	var post_time = new Date();
 	var news_pic = req.files.news_pic.path.split(path.sep).pop();
-
+	var publish_house = req.fields.publish_house;
 	try{
 		if(!title.length){
 			throw new Error('请填写标题');
@@ -46,7 +46,8 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 		categories: categories,
 		pv: 0,
 		weight: 0,
-		news_pic: news_pic
+		news_pic: news_pic,
+		publish_house: publish_house
 	};
 
 	PostModel.create(news)
