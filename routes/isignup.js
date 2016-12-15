@@ -5,7 +5,7 @@ var router = express.Router();
 var UserModel = require('../models/users');
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 router.get('/' ,checkNotLogin, function(req, res, next){
-	res.render('signup');
+	res.render('isignup');
 });
 router.post('/' ,checkNotLogin, function(req, res, next){
 	var name = req.fields.name;
@@ -16,7 +16,6 @@ router.post('/' ,checkNotLogin, function(req, res, next){
 	var password = req.fields.password;
 	var repassword = req.fields.repassword;
 	var privilege = 'user';
-	console.log(name);
 
 	try{
 		if (!(username.length >= 1 && username.length <=10)){
@@ -43,7 +42,7 @@ router.post('/' ,checkNotLogin, function(req, res, next){
 	}catch (e) {
 		req.flash('error', e.message);
 		console.log(e.message);
-		return res.redirect('/signup');
+		return res.redirect('/isignup');
 	}
 
 	password = sha1(password);
@@ -64,12 +63,12 @@ router.post('/' ,checkNotLogin, function(req, res, next){
 		delete user.password;
 		req.session.user = user;
 		req.flash('success', '注册成功');
-		res.redirect('/news');
+		res.redirect('/inews');
 	})
 	.catch(function(e){
 		if (e.message.match('E11000 duplicate key')) {
 			req.flash('error', '用户名已存在');
-			return res.redirect('/signup');
+			return res.redirect('/isignup');
 		}
 		next(e);
 	});

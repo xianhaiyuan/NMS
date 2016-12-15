@@ -1,0 +1,113 @@
+  <%- include('iheader') %>
+  <link rel="stylesheet" href="/css/isingle-news.css">
+  <title>nms-isingle-news</title>
+  </head>
+<body>
+<div class="i_head clearfix">
+
+	<div class="i_logo">
+			<a href="/inews" class="i_logo_pic"></a>
+		</div>
+		<div class="i_head_rig">
+			<% if (user) { %>
+				<div class="ui dropdown">
+			 	<div class="iconfont">&#xf00cc;</div>
+				  <div class="menu">
+				    <a href="" class="item">提交文章</a>
+				    <a href="/inews" class="item">我的文章</a>
+				    <a href="/isignout" class="item"> 退出登录 </a>
+				  </div>
+				</div>
+				<% }else{  %>
+			 <a href="/isignin" class="iconfont">&#xe6a0;</a> 
+			<% } %>
+		</div>
+		
+</div>
+
+<div class="main">
+	<div class="inews_tit">
+		<h1><%= news.title %></h1>
+		<p><%= news.publish_house %> <%= news.post_time %></p>
+	</div>
+	<div class="inews_img">
+		<img src="/img/<%= news.news_pic %>" alt="">
+	</div>
+	<div class="inews_content">
+		
+			<%- news.content %>
+		
+		<div class="author">
+			责任编辑人：<%= news.author_id.name %>
+		</div>
+	</div>
+	
+	<div class="inews_comment">
+		<div class="inews_comment_tit">
+			热门评论
+		</div>
+		<dl>
+			<dt>
+				<strong>
+					
+					<a href="" class="u_name">
+					<% if (comments[0] !== undefined) { %>
+					<%= comments[0].author_id.name %>
+					<% } %>
+					</a>
+				</strong>
+				<time class="time">
+					<span>
+					<% if (comments[0] !== undefined) { %>
+					<%= comments[0].fromNow %>
+					<% } %>
+					</span>
+				</time>
+			</dt>
+			<dd>
+				<p>
+					<% if (comments[0] !== undefined) { %>
+					<%- comments[0].content %>
+					<% } %>
+				</p>
+			</dd>
+		</dl>
+
+		<div class="inews_comment_btn">
+			<a href="/inews/<%= news._id %>/icomment" >发表评论</a>
+			<a href="/inews/<%= news._id %>/icomment"><%= news.commentsCount %>条评论</a>
+		</div>
+	</div>
+	
+
+	<div class="i_topStories">
+		<div class="i_topStories_tit clearfix">
+			<h2>今日要闻</h2>
+			<p>
+				<a href="/inews/cate/top-stories">更多</a>
+			</p>
+		</div>
+		<div class="i_topStories_tab">
+			<ul>
+				<% top_stories.forEach(function (news) {
+				  	if (news.permission === 'y' && news.categories === 'top-stories') {  %>
+				  <%- include('components/news-content', {news: news}) %>
+				<% }  
+				}) %>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<script src="js/YuxiSlider.jQuery.min.js"></script>
+<script>
+	(function(){
+		$('.ui.dropdown').dropdown();
+	})();
+</script>
+
+
+  
+
+
+<%- include('ifooter') %>

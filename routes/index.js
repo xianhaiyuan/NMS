@@ -1,17 +1,17 @@
 module.exports = function(app){
 	
 	app.get('/', function(req, res){
-		res.redirect('/news');
+		res.redirect('/inews');
 	});
-	app.use('/signup', require('./signup'));
-	app.use('/signin', require('./signin'));
-	app.use('/signout', require('./signout'));
-	app.use('/news', require('./news'));
+	app.use('/isignup', require('./isignup'));
+	app.use('/isignin', require('./isignin'));
+	app.use('/isignout', require('./isignout'));
+	app.use('/inews', require('./inews'));
 	
 
 	app.use(function (req, res) {
     if (!res.headersSent) {
-      res.render('404');
+      res.render('i404');
     }
   });
 };

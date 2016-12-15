@@ -3,6 +3,7 @@
 	--iconfont-color: #D10C20;
 	--i_a-hover-color: #277de2;
 	--fontSize: 14px;
+	--bigFont: 25px;
 }
 
 @media screen and (min-width:376px) and (max-width:414px){
@@ -70,6 +71,9 @@ a:hover{
 	width: 3rem;
 	height: 1rem;
 }
+.i_head a{
+	font-size: calc(var(--bigFont) + var(--fontScale));
+}
 .i_logo a{
 	padding-left: 1rem;
     line-height: 1rem;
@@ -85,6 +89,18 @@ a:hover{
 	height: 1rem;
 	line-height: 1rem;
 	padding-right: .2rem;
+}
+
+.ui.dropdown .menu{
+	left: -1.6rem;
+    width: 2rem;
+    top: .8rem;
+    border-radius: 5px;
+}
+.ui.dropdown .menu>.item{
+	font-size: 18px;
+	line-height: 18px;
+	padding: 5px !important;
 }
 
 /*header-style*/
@@ -136,7 +152,10 @@ a:hover{
 
 .ui.search>.results{
 	top: 70%;
-	left: .5rem;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-left: 8%;
+	width: 80%;
 }
 .ui.search>.results>.message .header{
 	font-size: calc(var(--fontSize) + var(--fontScale));
@@ -144,6 +163,7 @@ a:hover{
 .ui.search>.results>.message .description{
 	font-size: calc(var(--fontSize) + var(--fontScale));
 }
+
 
 /*search-style*/
 
@@ -218,6 +238,11 @@ em{
 	display: -webkit-box;
 	color: #000;
 }
+
+/*topStorier-style*/
+
+/*topStorier and section-style*/
+
 .tab_lef{
 	-webkit-box-flex: 1;
 }
@@ -236,14 +261,14 @@ em{
 }
 .tab_rig{
 	display: block;
-	margin-left: .1rem;
+	margin-left: .2rem;
 }
 .tab_rig img{
 	width: 1.8rem;
 	height: 60px;
 }
 
-/*topStorier-style*/
+/*topStorier and section-style*/
 
 /*section-style*/
 
@@ -256,7 +281,7 @@ em{
 	margin-top: .1rem;
 	margin-bottom: .1rem;
 	display: block;
-	padding-bottom: 1rem;
+	padding-bottom: .5rem;
 }
 .i_section hr{
 	border-top: 1px solid #eee;
@@ -444,16 +469,6 @@ em{
 }
 
 /*footer-style*/
-.ui.dropdown .menu{
-	left: -1.6rem;
-    width: 2rem;
-    top: .8rem;
-    border-radius: 5px;
-}
-.ui.dropdown .menu>.item{
-	font-size: 18px;
-	line-height: 18px;
-	padding: 5px !important;
-}
+
 
 

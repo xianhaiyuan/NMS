@@ -7,6 +7,7 @@ abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,d
 	--headFont: 20px;
 	--bgColor: #D43C33;
 	--i_a-hover-color: #DBEAF9;
+	--bigFont: 25px;
 }
 
 @media screen and (min-width:376px) and (max-width:414px){
@@ -22,6 +23,21 @@ abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,d
 }
 body{
 	height: 100vh;
+	font: 400 14px/1.5 "\5FAE\8F6F\96C5\9ED1",Helvetica;
+}
+ul li{
+	list-style: none;
+}
+.clearfix::after{
+	clear: both;
+	content: "";
+	display: table;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
 }
 .i_header{
 	font-size: calc(var(--headFont) + var(--fontScale) * 2);
@@ -34,15 +50,25 @@ body{
 	line-height: .6rem;
 }
 .i_header a, .i_header h2{
+	font-size: calc(var(--headFont) + var(--fontScale));
 	display: block;
 	color: #fff;
 }
 .i_header a{
-	font-size: calc(var(--fontSize) + var(--fontScale) * 2);
 	height: .6rem;
 	line-height: .6rem;
 	margin: 0 .1rem;
 }
+.i_header h2{
+	height: .6rem;
+	line-height: .6rem;
+}
+
+.i_header .i_head_rig{
+	height: .6rem;
+	line-height: .6rem;
+}
+
 .i_header a:hover{
 	color: var(--i_a-hover-color);
 }

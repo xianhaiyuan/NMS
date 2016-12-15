@@ -1,4 +1,4 @@
-  <!-- 标题:<a href='/news/<%= news._id %>' ><%= news.title %></a>
+  <!-- 标题:<a href='/inews/<%= news._id %>' ><%= news.title %></a>
   <% if (/(\.gif)|(\.jpg)|(\.png)/.test(news.news_pic)) { %>
   <img class="news_pic" src="/img/<%=news.news_pic %>">
   <% } %>
@@ -19,7 +19,7 @@
   -->
 
   <li>
-          <a href="/news/<%= news._id %>">
+          <a href="/inews/<%= news._id %>">
             <div class="tab_lef">
               <h3>
                 <%= news.title %>

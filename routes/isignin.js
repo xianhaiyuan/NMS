@@ -6,12 +6,11 @@ var sha1 = require('sha1');
 var userModel = require('../models/users');
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 router.get('/' ,checkNotLogin, function(req, res, next){
-	res.render('signin');
+	res.render('isignin');
 });
 router.post('/' , checkNotLogin, function(req, res, next){
 	var username = req.fields.username;
 	var password = req.fields.password;
-	console.log(username+","+password);
 	userModel.getUserByName(username)
 	.then(function(user){
 		if (password === ""){
