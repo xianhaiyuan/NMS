@@ -80,7 +80,7 @@ routes(app);
 // }));
 
 app.use(function (err, req, res, next) {
-  res.render('ierror', {
+  res.render('mobile/ierror', {
     error: err
   });
 });

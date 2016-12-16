@@ -11,7 +11,7 @@ module.exports = function(app){
 
 	app.use(function (req, res) {
     if (!res.headersSent) {
-      res.render('i404');
+      res.render('mobile/i404');
     }
   });
 };

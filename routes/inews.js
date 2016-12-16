@@ -22,7 +22,7 @@ router.get('/', function(req, res, next){// GET /news 所有用户或者特定�
 			var top_stories_w0 = result[1];
 			var top_stories_w1 = result[2];
 			var sport_newses_w0 = result[3];
-			res.render('inews', {
+			res.render('mobile/inews', {
 			newses: newses,
 			top_stories_w0: top_stories_w0,
 			top_stories_w1: top_stories_w1,
@@ -77,7 +77,7 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 });
 
 router.get('/icreate', checkLogin, function(req, res, next){ // GET /news 所有用户或者特定用户的新闻页
-	res.render('icreate');
+	res.render('mobile/icreate');
 });
 router.get('/cate/:newsCategories', function(req, res, next){
 	var categories = req.params.newsCategories;
@@ -87,7 +87,7 @@ router.get('/cate/:newsCategories', function(req, res, next){
 			PostModel.getNewses(),
 		])
 		.then(function(result){
-			res.render('icate-news', {
+			res.render('mobile/icate-news', {
 				newses_w0: result[0],
 				newses_w1: result[1],
 				newses: result[2]
@@ -111,7 +111,7 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 			throw new Error('改文章不存在');
 		}
 		news.post_time = moment(news.post_time).format('YYYY-MM-DD HH:mm');
-		res.render('isingle-news', {
+		res.render('mobile/isingle-news', {
 			top_stories: top_stories,
 			news: news,
 			comments: comments
@@ -131,7 +131,7 @@ router.get('/:newsID/iedit', checkLogin, function(req, res, next){ // GET /news/
 		if (author_id.toString() !== news.author_id._id.toString()){
 			throw new Error('权限不足');
 		}
-		res.render('iedit', {
+		res.render('mobile/iedit', {
 			news: news
 		});
 	})
@@ -166,7 +166,7 @@ router.get('/:newsID/icomment', function(req, res, next){
 	var newsID = req.params.newsID;
 	CommentModel.getComments(newsID)
 		.then(function(comments){
-			res.render('icomment',{
+			res.render('mobile/icomment',{
 				comments: comments
 			});
 		})
@@ -179,14 +179,12 @@ router.post('/:newsID/icomment', checkLogin, function(req, res, next){ // POST /
 	var author_id = req.session.user._id;
 	var newsID = req.params.newsID;
 	var content = req.fields.content;
-	console.log(content)
 	var comment = {
 		author_id: author_id,
 		newsId: newsID,
 		content: content
 	};
 	CommentModel.create(comment).then(function(){
-		console.log("success");
 		req.flash('success', '留言成功');
 		res.redirect('back');
 	})

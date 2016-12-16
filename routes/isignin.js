@@ -6,7 +6,7 @@ var sha1 = require('sha1');
 var userModel = require('../models/users');
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 router.get('/' ,checkNotLogin, function(req, res, next){
-	res.render('isignin');
+	res.render('mobile/isignin');
 });
 router.post('/' , checkNotLogin, function(req, res, next){
 	var username = req.fields.username;

@@ -5,7 +5,7 @@ var router = express.Router();
 var UserModel = require('../models/users');
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 router.get('/' ,checkNotLogin, function(req, res, next){
-	res.render('isignup');
+	res.render('mobile/isignup');
 });
 router.post('/' ,checkNotLogin, function(req, res, next){
 	var name = req.fields.name;
