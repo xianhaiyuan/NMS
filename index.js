@@ -9,13 +9,8 @@ var pkg = require('./package');
 var app = express();
 var winston = require('winston');
 var expressWinston = require('express-winston');
-
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
 	name: config.session.key,  // 设置 cookie 中保存 session id 的字段名称
