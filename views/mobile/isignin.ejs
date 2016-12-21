@@ -1,0 +1,72 @@
+<%- include('iheader') %>
+
+<link rel="stylesheet" href="/css/isignin.css">
+<title>nms-isignin</title>
+</head>
+<body>
+
+
+
+<div class="i_header">
+    <a href="javascript:history.back()">&lt;</a>
+    <h2>登录</h2>
+    <a href="/isignup">注册</a>
+  </div>
+  <div class="i_main">
+    <form methor="post">
+      <input type="text" placeholder="请输入用户名" maxlength="25" class="user_input username" required autofocus>
+      <input type="password" placeholder="登录密码" maxlength="25" class="user_input password" required>
+      <a value="登录" class="submit login">登录</a>
+    </form>
+  </div>
+  <div class="i_footer">
+    <div class="i_foot_list">
+      <a href="">应用</a>|
+      <a href="">客户端</a>|
+      <a href="">联系</a>|
+      <a href="">反馈</a>
+    </div>
+    <p>手机新闻网 i.xxx.com</p>
+  </div>
+
+<div class="err"></div>
+
+
+<script>
+    (function(){
+      var login = function(){
+        var data = {
+        username: $(".username").val(),
+        password: $(".password").val()
+        };
+        $.post("/isignin",{
+          username: $(".username").val(),
+          password: $(".password").val()
+        })
+        .done(function(data){
+          if (data.err) {
+            $(".err").html(data.err);
+          }
+          if(data.success) {
+            window.location.href = document.referrer;
+          }
+          console.log(data);
+        })
+        .fail(function(err){
+          console.log(err);
+        });
+      }
+      $(".login").click(login);
+        
+      $(".password").keydown(function(e){
+          if (e.keyCode == 13) {
+            login();
+          }
+        });
+
+    })();
+    
+
+  </script>
+
+<%- include('ifooter') %>

@@ -1,0 +1,75 @@
+<%- include('iheader') %>
+
+<link rel="stylesheet" href="/css/icomment.css">
+<title>nms-icomment</title>
+</head>
+<body>
+	<div class="i_header">
+		<% if (comments[0]) { %>
+		<a href="/inews/<%= comments[0].newsId %>">&lt;</a>
+		<% }else{  %>
+		<a href="javascript:history.back()"><</a>
+		<% } %>
+		<h2>评论</h2>
+		<div class="i_head_rig">
+			<% if (user) { %>
+				<div class="ui dropdown">
+			 	<div class="iconfont">&#xf00cc;</div>
+				  <div class="menu">
+				    <a href="" class="item">提交文章</a>
+				    <a href="/inews" class="item">我的文章</a>
+				    <a href="/isignout" class="item"> 退出登录 </a>
+				  </div>
+				</div>
+				<% }else{  %>
+			 <a href="/isignin" class="iconfont">&#xe6a0;</a> 
+			<% } %>
+		</div>
+	</div>
+
+	<div class="i_main">
+		<div class="ui comments">
+
+		  <% if (comments[0] !== undefined) { 
+		  		comments.forEach(function(comment){  %>
+
+		  	<div class="comment">
+		    <a class="avatar">
+		      <img src="/img/<%= comment.author_id.avatar %>">
+		    </a>
+		    <div class="content">
+		      <a class="author"><%= comment.author_id.name %></a>
+		      <div class="metadata">
+		        <div class="date"><%= comment.fromNow %></div>
+		      </div>
+		      <div class="text">
+		        <%- comment.content %>
+		      </div>
+		      <div class="actions">
+		        <a class="reply">回复</a>
+		      </div>
+		    </div>
+		  </div>
+
+		  <% } );
+		  }   %>
+		  <form class="ui reply form" method="POST">
+		    <div class="field">
+		      <textarea name="content"></textarea>
+		    </div>
+		    <button class="ui primary submit labeled icon button"><i class="iconfont edit">&#xe626;</i> 评论 </button>
+		  </form>
+  
+		</div>
+	</div>
+
+
+<div class="err"></div>
+
+
+<script>
+	(function(){
+		$('.ui.dropdown').dropdown();
+	})();
+</script>
+<%- include('ifooter') %>

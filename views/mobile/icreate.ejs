@@ -1,5 +1,6 @@
-<%- include('header') %>
-
+<%- include('iheader') %>
+</head>
+<body>
 <div class="ui grid">
   <div class="four wide column">
     <a class="avatar"
@@ -15,6 +16,10 @@
       <div class="field required">
         <label>标题</label>
         <input type="text" name="title">
+      </div>
+      <div class="field required">
+        <label>出版社</label>
+        <input type="text" name="publish_house">
       </div>
       <div class="field required">
         <label>性别</label>
@@ -44,4 +49,4 @@
   </form>
 </div>
 
-<%- include('footer') %>
+<%- include('ifooter') %>

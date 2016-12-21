@@ -43,24 +43,79 @@ module.exports = {
 	},
 	getNewsById: function getNewsById(newsid){
 		return News
-		.findOne({_id: newsid})
+		.findOne({_id: newsid,permission: 'y'})
 		.populate({path: 'author_id', model: 'User'})
 		.addCreatedAt()
 		.addCommentsCount()
 		.contentToHtml()
 		.exec();
 	},
-	getNewses: function getNewses(author_id){
+	getNewses: function getNewses(){
 		var query = {};
-		if (author_id) {
-			query.author_id = author_id;
-		}
+		query.permission = 'y';
 		return News
 		.find(query)
 		.populate({path: 'author_id', model: 'User'})
 		.sort({_id: -1})
 		.addCreatedAt()
 		.addCommentsCount()
+		.contentToHtml()
+		.exec();
+	},
+	getNewsByCategories: function getNewsByCategories(categories){
+		var query = {};
+		query.categories = categories;
+		query.permission = 'y';
+		return News
+		.find(query)
+		.populate({path: 'author_id', model: 'User'})
+		.sort({_id: -1})
+		.addCreatedAt()
+		.contentToHtml()
+		.exec();
+	},
+	getNewses_limit_8: function getNewses_limit_8(author_id){
+		var query = {};
+		if (author_id) {
+			query.author_id = author_id;
+		}
+		query.permission = 'y';
+		return News
+		.find(query)
+		.limit(8)
+		.populate({path: 'author_id', model: 'User'})
+		.sort({_id: -1})
+		.addCreatedAt()
+		.addCommentsCount()
+		.contentToHtml()
+		.exec();
+	},
+	getNewsByType_w0_limit8: function getNewsByType_w0(categories){
+		var query = {
+		};
+		query.categories = categories;
+		query.weight = 0;
+		query.permission = 'y';
+		return News
+		.find(query)
+		.limit(8)
+		.populate({path: 'author_id', model: 'User'})
+		.sort({_id: -1})
+		.addCreatedAt()
+		.contentToHtml()
+		.exec();
+	},
+	getNewsByType_w1_limit8: function getNewsByType_w1(categories){
+		var query = {};
+		query.categories = categories;
+		query.weight = 1;
+		query.permission = 'y';
+		return News
+		.find(query)
+		.limit(8)
+		.populate({path: 'author_id', model: 'User'})
+		.sort({_id: -1})
+		.addCreatedAt()
 		.contentToHtml()
 		.exec();
 	},
