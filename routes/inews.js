@@ -9,8 +9,7 @@ var moment = require('moment');
 
 router.get('/', function(req, res, next){// GET /news 所有用户或者特定用户的新闻页
 	// var author_id = req.query.author_id;
-	//此处可以跳转到某个用户的文章W
-	
+	//此处可以跳转到某个用户的文章
 	Promise.all([
 			PostModel.getNewses(),
 			PostModel.getNewsByType_w0_limit8('top-stories'),
@@ -88,7 +87,7 @@ router.get('/cate/:newsCategories', function(req, res, next){
 		])
 		.then(function(result){
 			res.render('mobile/icate-news', {
-				newses_w0: result[0],
+				newses_cate_all: result[0],
 				newses_w1: result[1],
 				newses: result[2]
 			});

@@ -80,21 +80,26 @@
 	<div class="i_section">
 
 		<div class="i_section_tit clearfix">
-			<h2><% switch(newses_w0[0].categories){
-						case 'sport': %>体育
-					<%  break;
-						case 'top-stories': %> 今日要闻
-					<%  break;
-						default: %> 今日要闻
+			<h2>
+				<% if (newses_cate_all[0]) { %>
+					<% switch(newses_cate_all[0].categories){
+							case 'sport': %>体育
+						<%  break;
+							case 'top-stories': %> 今日要闻
+						<%  break;
+							default: %> 今日要闻
+					<% } %>
 				<% } %>
 			</h2>
 			<p>
-				<a href="/inews/cate/<%= newses_w0[0].categories %>">更多</a>
+				<% if (newses_cate_all[0]) { %>
+				<a href="/inews/cate/<%= newses_cate_all[0].categories %>">更多</a>
+				<% } %>
 			</p>
 		</div>
 		<div class="i_section_tab">
 			<ul>
-				<% newses_w0.forEach(function (n) {
+				<% newses_cate_all.forEach(function (n) {
 				  	if (n.permission === 'y') {  %>
 				  <%- include('components/news-content', {news: n}) %>
 				<% }  
