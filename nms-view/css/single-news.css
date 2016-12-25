@@ -25,8 +25,10 @@ time, mark, audio, video {
 	--fontSclae: 1px;
 	--fontSmall: 14px;
 	--fontNormal: 1rem;
+	--fontMain: 1.1rem;
 	--fontMiddle: 1.2rem;
 	--fontLarge: 1.4rem;
+
 
 	--max-wid: 1024px;
 	--logoWidth: 150px;
@@ -35,6 +37,12 @@ time, mark, audio, video {
 	--paddingNormal: .5rem;
 
 	--h2: 2rem;
+
+	--sec-margin-l: 6rem;
+
+	--ad_sec_img-w: 60%;
+	--ad_sec_h3-w: 38%;
+	--ad_sec_h3-p-t: 0;
 }
 
 @media screen and (min-width:1024px) and  (max-width:1367px){
@@ -43,11 +51,21 @@ time, mark, audio, video {
 	}
 }
 
-@media screen and (min-width:640px) and (max-width:1024px){
+@media screen and (max-width:768px){
+	body{
+		--fontScale: 3px;
+		--ad_sec_img-w: 100%;
+		--ad_sec_h3-w: 100%;
+		--ad_sec_h3-p-t: 1.5rem;
+	}
+}
+
+@media screen and (max-width:1024px){
 	body{
 		--fontScale: 3px;
 		--logoWidth: 120px;
 		--max-wid: 1024px;
+		--sec-margin-l: 2rem;
 	}
 }
 
@@ -342,7 +360,213 @@ nav{
 /*nav-style*/
 
 
+/*main-style*/
 
+.main{
+	margin-top: 2rem;
+	font-size: calc(var(--fontMain) - var(--fontScale));
+}
+
+.s-n-c{
+	width: 65%;
+	float: left;
+}
+
+.sec{
+	width: 25%;
+	float: left;
+	margin-left: var(--sec-margin-l);
+}
+
+.tit h1{
+	font-size: 2.1rem;
+	font-weight: 700;
+}
+
+.time{
+	text-align: right;
+	margin-top: 1rem;
+	font-style: italic;
+}
+
+.n-con{
+	margin-top: 1rem;
+}
+
+
+/*comment-style*/
+
+.comment{
+	margin-top: 3rem;
+}
+
+.comment textarea{
+	margin-bottom: 2rem;
+	width: 100%;
+	height: 140px;
+}
+
+.com-foot{
+
+}
+
+.comment .btn{
+	display: block;
+	float: left;
+    width: 6rem;
+    height: 2.5rem;
+	border-radius: 3px;
+	background-color: rgba(255,0,0,.8);
+	padding: .5rem;
+	text-align: center;
+	color: #fff;
+	border: 1px solid #f00;
+}
+
+.comment .btn:hover{
+	background-color: rgba(255,0,0,1);
+	cursor: pointer;
+}
+
+.comment-count{
+	float: right;
+	font-size: calc(var(--fontMiddle) - var(--fontScale));
+	color: red;
+	font-style: italic;
+
+}
+
+.comment .tit{
+	margin-top: 2rem;
+	font-size: calc(var(--fontLarge) - var(--fontScale));
+}
+
+.comment ul{
+	margin-top: 1rem;
+}
+
+.comment .name a{
+	color: #004276;
+}
+
+.comment .name a:hover{
+	color: #ba2636;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.comment .name, .comment .single-comment{
+	margin-bottom: .5rem;
+}
+
+.comment ul li{
+	margin-bottom: .5rem;
+	padding-top: 1rem;
+	border-top: 1px dotted #aaa;
+}
+
+.comment ul li:nth-child(1){
+	border: 0;
+}
+
+
+
+
+/*comment-style*/
+
+
+/*n_s-style*/
+
+
+.n_s{
+	width: 100%;
+	float: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.n_s .section{
+	flex: auto;
+	width: 33.3333%;
+	padding-bottom: 3rem;
+	border-bottom: 3px solid #ccc;
+}
+
+
+.section .tit{
+	margin-bottom: .4rem;
+}
+
+.section .tit h3{
+	float: left;
+	width: 70%;
+	font-weight: 700;
+}
+
+.section .tit .time{
+	float: left;
+	width: 30%;
+	text-align: right;
+}
+
+.section ul li{
+	margin-top: .4rem;
+}
+
+/*n_s-style*/
+
+
+/*ad_sec-style*/
+
+.ad_sec{
+	height: 100%;
+	position: relative;
+	float: left;
+	background-color: #eee;
+	margin-top: 4.5rem;
+}
+
+.ad_sec:before{
+	display: block;
+	content: '广告';
+	position: absolute;
+	top: -38px;
+	left: 0;
+	font-size: 1.5rem;
+}
+
+.ad_sec li{
+	padding-bottom: .5rem;
+	padding-top: .5rem;
+	border-top: 1px solid #ccc;
+	float: left;
+}
+
+.ad_sec ul li:nth-child(1){
+	padding-top: 0;
+	border-top: 0;
+}
+
+.ad_sec img{
+	width: var(--ad_sec_img-w);
+	float: left;
+}
+
+.ad_sec h3{
+	float: left;
+	padding-left: .5rem;
+	height: 66px;
+	width: var(--ad_sec_h3-w);
+	overflow: hidden;
+	padding-top: var(--ad_sec_h3-p-t);
+}
+
+/*ad_sec-style*/
+
+
+
+/*main-style*/
 
 
 

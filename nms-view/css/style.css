@@ -27,6 +27,7 @@ time, mark, audio, video {
 	--fontNormal: 1rem;
 	--fontMiddle: 1.2rem;
 	--fontLarge: 1.4rem;
+	--fontMain: 1.1rem;
 
 	--max-wid: 1024px;
 	--logoWidth: 150px;
@@ -341,6 +342,11 @@ nav{
 
 /*nav-style*/
 
+
+
+.main{
+	font-size: calc(var(--fontMain) - var(--fontScale));
+}
 /*top_w1-style*/
 
 .section{
@@ -368,6 +374,8 @@ nav{
 .ad .section{
 	width: 100%;
 	height: 100%;
+    padding-left: .5rem;
+	padding-top: .5rem;
 	border: 1px solid #f00;
 }
 
@@ -480,7 +488,9 @@ nav{
 	width: 45%;
 }
 
-.n_sport .sport_sec{
+/*ad_sec-style*/
+
+.ad_sec{
 	width: 30%;
 	height: 100%;
 	position: relative;
@@ -488,7 +498,7 @@ nav{
 	background-color: #eee;
 }
 
-.sport_sec:before{
+.ad_sec:before{
 	display: block;
 	content: '广告';
 	position: absolute;
@@ -497,30 +507,33 @@ nav{
 	font-size: 1.5rem;
 }
 
-.sport_sec li{
+.ad_sec li{
 	padding-bottom: .5rem;
 	padding-top: .5rem;
 	border-top: 1px solid #ccc;
 	float: left;
 }
 
-.sport_sec ul li:nth-child(1){
+.ad_sec ul li:nth-child(1){
 	padding-top: 0;
 	border-top: 0;
 }
 
-.sport_sec img{
+.ad_sec img{
 	width: 60%;
 	float: left;
 }
 
-.sport_sec h3{
+.ad_sec h3{
 	float: left;
 	margin-left: .5rem;
 	height: 66px;
 	width: 35%;
 	overflow: hidden;
 }
+
+/*ad_sec-style*/
+
 
 /*sport_news-style*/
 
@@ -560,6 +573,7 @@ nav{
 .section .tit h3{
 	float: left;
 	width: 70%;
+	font-weight: 700;
 
 }
 
@@ -581,6 +595,7 @@ nav{
 footer{
 	background-color: #4C4C4C;
 	margin-top: 2rem;
+	font-size: calc(var(--fontMain) - var(--fontScale));
 }
 
 .footer{

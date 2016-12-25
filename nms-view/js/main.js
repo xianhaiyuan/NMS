@@ -39,16 +39,16 @@
 	})();
 	var more_active = (function(){
 		return function(){
-			if ($(this).width() <= 1024) {
-				$('.to_more').appendTo('.m_list ul');
-			}
+			// if ($(this).width() <= 1024) {
+			// 	$('.to_more').appendTo('.m_list ul');
+			// }
 
 			// if ($(this).width() <= 920) {
 			// 	$('.t_s .time').css({
 			// 		display: 'none'
 			// 	});
 			// }
-			if ($(this).width() <= 840) {
+			if ($(this).width() < 840) {
 				$('.weather').css({
 					"border": "none"
 				});
@@ -83,7 +83,7 @@
 				// 		display: 'block'
 				// 	});
 				// }
-				if ($(this).width() <= 840) {
+				if ($(this).width() < 840) {
 					$('.weather').css({
 						"border": "none"
 					});
@@ -142,14 +142,14 @@
 	login_box();
 
 
-	$(".slider").YuxiSlider({
-			width:600, //容器宽度
-			height:300, //容器高度
-			control:$('.control'), //绑定控制按钮
-			during:4000, //间隔4秒自动滑动
-			speed:800, //移动速度0.8秒
-			mousewheel:true, //是否开启鼠标滚轮控制
-			direkey:true //是否开启左右箭头方向控制
-		});
+	// $(".slider").YuxiSlider({
+	// 		width:600, //容器宽度
+	// 		height:300, //容器高度
+	// 		control:$('.control'), //绑定控制按钮
+	// 		during:4000, //间隔4秒自动滑动
+	// 		speed:800, //移动速度0.8秒
+	// 		mousewheel:true, //是否开启鼠标滚轮控制
+	// 		direkey:true //是否开启左右箭头方向控制
+	// 	});
 
 })()
