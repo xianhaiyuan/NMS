@@ -11,7 +11,7 @@ module.exports = function(app){
 	// app.use('/news', require('/news'));
 	// app.use('/signup' require('./signup'));
 	// app.use('/signin', require('./signin'));
-	// app.use('/signout', require('./signout'));
+	// app.use('/signout', require('./isignout'));
 	
 
 	app.use(function (req, res) {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+	<title>icomment</title>
+	<link rel="stylesheet" href="css/semantic.min.css">
+	<link rel="stylesheet" href="css/icomment.css">
+</head>
+<script>
+		(function(){
+			var deviceWidth = document.documentElement.clientWidth;
+			if(deviceWidth > 640) deviceWidth = 640;
+			document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+		})();
+	</script>
+<body>
+	<div class="i_header">
+		<a href=""><</a>
+		<h2>评论</h2>
+		<h2>&nbsp;&nbsp;</h2>
+	</div>
+	
+
+
+	<div class="i_main">
+		<div class="ui comments">
+
+		  <div class="comment">
+		    <a class="avatar">
+		      <img src="img/1.jpg">
+		    </a>
+		    <div class="content">
+		      <a class="author">Joe Henderson</a>
+		      <div class="metadata">
+		        <div class="date">1 day ago</div>
+		      </div>
+		      <div class="text">
+		        <p>The hours, minutes and seconds stand as visible reminders that your effort put them all there. </p>
+		        <p>Preserve until your next run, when the watch lets you see how Impermanent your efforts are.</p>
+		      </div>
+		      <div class="actions">
+		        <a class="reply">Reply</a>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="comment">
+		    <a class="avatar">
+		      <img src="/images/avatar/small/christian.jpg">
+		    </a>
+		    <div class="content">
+		      <a class="author">Christian Rocha</a>
+		      <div class="metadata">
+		        <div class="date">2 days ago</div>
+		      </div>
+		      <div class="text">I re-tweeted this. </div>
+		      <div class="actions">
+		        <a class="reply">Reply</a>
+		      </div>
+		    </div>
+		  </div>
+		  <form class="ui reply form">
+		    <div class="field">
+		      <textarea></textarea>
+		    </div>
+		    <div class="ui primary submit labeled icon button"><i class="iconfont edit">&#xe626;</i> 评论 </div>
+		  </form>
+  
+		</div>
+	</div>
+
+
+</body>
+</html>
