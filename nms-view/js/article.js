@@ -1,5 +1,8 @@
 !function(){
-	var converter = new showdown.Converter(),
-    text      = '#hello, markdown!',
-    html      = converter.makeHtml(text);
+	var converter = new showdown.Converter();
+    $('.ui.dropdown').dropdown();
+
+    $('.content textarea').on('input propertychange',function(){
+    	$('.pre-view').html(converter.makeHtml($(this).val()));
+    })
 }()
