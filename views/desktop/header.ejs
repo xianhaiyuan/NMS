@@ -5,3 +5,11 @@
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/semantic.min.js"></script>
 	<link rel="stylesheet" href="/css/semantic.min.css">
+	<script type="text/javascript">
+		(function(){
+			var deviceWidth = document.documentElement.clientWidth;
+			if(deviceWidth < 640) {
+				window.location.href = '/inews'
+			}
+		})();
+	</script>

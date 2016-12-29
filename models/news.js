@@ -1,6 +1,7 @@
 var News = require('../db/mongo').News;
 var marked = require('marked');
 var CommentModel = require('./comments');
+var Mongolass = require('mongolass');
 
 News.plugin('addCommentsCount', {
 	afterFind: function(newses){
@@ -151,7 +152,22 @@ module.exports = {
 	updateNewsById: function updateNewsById(newsid, author_id, data){
 		return News.update({author_id: author_id, _id: newsid}, {$set: data}).exec();
 	},
-	delNewsById: function delNewsById(newsid, author_id){
+	delNewsByAuthorId: function delNewsByAuthorId(newsid, author_id){
 		return News.remove({author_id: author_id, _id: newsid}).exec();
+	},
+	delNewsByNewsId: function delNewsByNewsId(newsid){
+		return News.remove({_id: newsid}).exec();
+	},
+	updateW_permit: function updateW_permit(newstit, weight){
+		return News.update(
+		{
+			"_id": newstit
+		},
+		{
+			$set: {
+					'weight': weight,
+					'permission': 'y'
+			}
+		});
 	}
 };

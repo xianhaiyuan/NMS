@@ -384,6 +384,15 @@ nav{
 	border: 1px solid #f00;
 }
 
+.ad .section a{
+	color: #222;
+	transition: all .8s ease;
+}
+
+.ad .section a:hover{
+	color: red;
+}
+
 .top_stories_w1 .ad{
 	padding-top: .5rem;
 }
@@ -458,6 +467,10 @@ nav{
 .news-card .pic img{
 	width: 100%;
 	height: 100%;
+}
+
+.news-card-a{
+	color: #000;
 }
 
 /*section_card-style*/

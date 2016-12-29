@@ -41,7 +41,8 @@ exports.News = mongolass.model('News', {
 	pv: {type:'number'},
 	weight: {type: 'number'},   //权限默认0，最高1。2,3...递减
 	news_pic: {type: 'string'},
-	publish_house: {type: 'string'}
+	publish_house: {type: 'string'},
+	except: {type: 'string'}
 });
 exports.News.index({author_id: 1, _id: -1});
 

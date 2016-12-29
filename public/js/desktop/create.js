@@ -11,10 +11,16 @@
     	var pic = $('#news-pic');
     	var publish = $('#publish_house');
     	var content = $('.content textarea');
+        var except = $('#except');
     	if (tit.val().length < 0 || tit.val() === "") {
     		alert('请填写新闻标题！');
     		return false;
     	}
+        if (except.val().length < 0 || except.val() === "") {
+            alert('请填写新闻摘要！');
+            return false;
+        }
+
     	if (pic.val() === "") {
     		alert('请上传新闻图片！');
     		return false;

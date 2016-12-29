@@ -18,7 +18,7 @@
 				  </div>
 				</div>
 				<div class="avatar">
-					<a href="#"><img src="/img/<%= user.avatar %>"></a>
+					<a href="/user"><img src="/img/<%= user.avatar %>"></a>
 				</div>
 			</div>
 		</div>
@@ -34,7 +34,11 @@
 					</div>
 					<ul>
 						<li><a href="/user">个人档案 </a></li>
-						<li><a href="/user/news/<%= user._id %>">文章提交情况</a></li><%= user.author_id %>
+						<% if (user.privilege === 'admin') { %>
+					     <li><a href="/user/admin">文章管理</a></li>
+					    <% }else{ %>
+					    <li><a href="/user/news/<%= user._id %>">文章提交情况</a></li>
+					    <% } %>
 						<li><a href="#">个性名片</a></li>
 						<li><a href="#">专栏设置</a></li>
 					</ul>

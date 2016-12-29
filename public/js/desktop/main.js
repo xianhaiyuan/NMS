@@ -55,7 +55,7 @@
 		            $('.alert').html(data.err);
 		          }
 		          if(data.success) {
-		            window.location.href = document.referrer;
+		            window.location.href = '/news';
 		          }
 		          console.log(data);
 		        })

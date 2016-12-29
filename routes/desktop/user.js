@@ -20,22 +20,52 @@ router.get('/news/:author_id', checkLogin, function(req, res, next){
 router.post('/news', checkLogin, function(req, res, next){
 	var news_id = req.fields.news_id;
 	var author_id = req.session.user._id;
-	PostModel.delNewsById(news_id, author_id)
+	PostModel.delNewsByAuthorId(news_id, author_id)
 	.then(function(result){
 		res.send('success');
 	})
 });
 router.get('/admin', checkLogin, function(req, res, next){
-	PostModel.getAllNews()
-	.then(function(result){
-		res.render('desktop/admin',{
-			newses: result
+	var user = req.session.user;
+	if (user.privilege === 'admin') {
+		PostModel.getAllNews()
+		.then(function(result){
+			res.render('desktop/admin',{
+				newses: result
+			});
+		})
+	}else{
+		res.render('desktop/404',{
 		});
-	})
+	}
+	
 })
-router.post('/admin', checkLogin, function(req, res, next){
-	res.render('desktop/admin',{
+router.post('/admin/:action', checkLogin, function(req, res, next){
+	var user = req.session.user;
+	if (user.privilege === 'admin') {
+		var action = req.params.action;
+		var news_id = req.fields.news_id;
+		var weight = req.fields.weight;
+		weight = parseInt(weight, 10);
+		if (action === 'permit') {
+			PostModel.updateW_permit(news_id, weight)
+			.then(function(result){
+				res.send('success');
+			});
+		}
+		if (action === 'discard') {
+			console.log("discard")
+			PostModel.delNewsByNewsId(news_id)
+			.then(function(result){
+				res.send('success');
+			})
+			res.send('success');
+		}
+	}else{
+		es.render('desktop/404',{
 		});
+	}
+	
 })
 router.post('/', checkLogin, function(req, res, next){
 	var _id = req.session.user._id;

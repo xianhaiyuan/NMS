@@ -14,18 +14,21 @@ router.get('/', function(req, res, next){// GET /news 所有用户或者特定�
 			PostModel.getNewses(),
 			PostModel.getNewsByType_w0_limit8('top-stories'),
 			PostModel.getNewsByType_w1_limit8('top-stories'),
-			PostModel.getNewsByType_w0_limit8('sport')
+			PostModel.getNewsByType_w0_limit8('sport'),
+			PostModel.getNewsByType_w1_limit8('sport')
 		])
 	.then(function(result){
 			var newses = result[0];
 			var top_stories_w0 = result[1];
 			var top_stories_w1 = result[2];
 			var sport_newses_w0 = result[3];
+			var sport_newses_w1 = result[4];
 			res.render('desktop/news', {
 			newses: newses,
 			top_stories_w0: top_stories_w0,
 			top_stories_w1: top_stories_w1,
-			sport_newses_w0: sport_newses_w0
+			sport_newses_w0: sport_newses_w0,
+			sport_newses_w1: sport_newses_w1
 		});
 	})
 	.catch(next);
@@ -38,9 +41,9 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 	var content = req.fields.content;
 	var categories = req.fields.categories;
 	var post_time = new Date();
-	console.log(content);
 	var news_pic = req.files.news_pic.path.split(path.sep).pop();
 	var publish_house = req.fields.publish_house;
+	var except = req.fields.except;
 	try{
 		if(!title.length){
 			throw new Error('请填写标题');
@@ -64,7 +67,8 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 		pv: 0,
 		weight: 0,
 		news_pic: news_pic,
-		publish_house: publish_house
+		publish_house: publish_house,
+		except: except
 	};
 
 	PostModel.create(news)
@@ -111,7 +115,7 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 			throw new Error('改文章不存在');
 		}
 		news.post_time = moment(news.post_time).format('YYYY-MM-DD HH:mm');
-		res.render('mobile/isingle-news', {
+		res.render('desktop/single-news', {
 			top_stories: top_stories,
 			news: news,
 			comments: comments
@@ -175,7 +179,8 @@ router.get('/:newsID/icomment', function(req, res, next){
 
 });
 
-router.post('/:newsID/icomment', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
+router.post('/comment/:newsID', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
+	console.log("in")
 	var author_id = req.session.user._id;
 	var newsID = req.params.newsID;
 	var content = req.fields.content;

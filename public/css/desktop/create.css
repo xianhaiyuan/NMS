@@ -260,7 +260,7 @@ label{
 	margin-bottom: 1rem;
 }
 
-.tit input, .content textarea, .pre-view, .p-h input{
+.tit input, .content textarea, .pre-view, .p-h input, .except input{
 	border: 1px solid #ccc;
     border-radius: 5px;
     padding-left: 1rem;
@@ -300,6 +300,16 @@ label{
 
 .pre-view{
 	float: right;
+}
+
+.except{
+	float: left;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+.except input{
+	width: 100%;
+	height: 40px;
 }
 
 /*main-style*/

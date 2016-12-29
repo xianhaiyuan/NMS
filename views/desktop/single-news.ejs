@@ -1,7 +1,7 @@
 <%- include('header') %>
-	<link rel="stylesheet" href="/css/desktop/login.css">
-	<link rel="stylesheet" href="/css/desktop/style.css">
-	<title>news</title>
+<link rel="stylesheet" href="/css/desktop/login.css">
+<link rel="stylesheet" href="/css/desktop/single-news.css">
+<title>single-news</title>
 </head>
 <body>
 	<header>
@@ -107,117 +107,59 @@
 		</div>
 	</nav>
 
-	<div class="main">
 
-		<div class="top_stories_w1 clearfix mid">
-			<div class="top_w1">
+	<div class="main mid clearfix">
+		<div class="s-n-c">
+			<div class="tit">
+				<h1>
+					<%= news.title %>
+				</h1>
+				<div class="time">
+					<%= news.created_at %>
+				</div>
+			</div>
+			<div class="n-con">
+				<p>
+					<%- news.content %>
+				</p>
+			</div>
+			<div class="comment">
+				<textarea name="content" id="com-content" form="submit"></textarea>
+				<form methor="post" id="submit" action="/news/comment/<%= news._id %>">
+				<div class="com-foot clearfix">
+					<button class="btn" id="comment-btn" form="submit" newsid=<%= news._id %>>
+					发表评论
+					</button>
+					<div class="comment-count">
+						<%= news.commentsCount %>条评论
+					</div>
+				</div>
+				<form>
 				<div class="tit">
-					<h1>
-						<%= top_stories_w1[0].title %>
-					</h1>
-					<div class="excerpt">
-						<%= top_stories_w1[0].except %>
-					</div>
-					<div class="time">
-						<%= top_stories_w1[0].created_at %>
-					</div>
+					最新评论
 				</div>
-				<div class="pic">
-					<img src="/img/<%= top_stories_w1[0].news_pic %>">
-				</div>
-			</div>
-			
-			<section class="ad">
-				<div class="section">
-					<div class="tit clearfix">
-						<h3>今日头条</h3>
-					</div>
-					<ul>
-						<% top_stories_w0.forEach(function (n) {
-						  	if (n.permission === 'y') {  %>
-						    <a href="#"><li><%= n.title %></li></a>
-						<% }  
-						}) %>	
-					</ul>
-				</div>
-			</section>
-		
-		</div>
-
-		<div class="section_card top_stories_w0 mid">
-			<% for (var i = 1; i < top_stories_w1.length; i++) { %>
-				<div class="news-card">
-					<div class="pic">
-						<img src="/img/<%= top_stories_w1[i].news_pic %>">
-					</div>
-					<div class="tit">
-						<h3>
-							<%= top_stories_w1[i].title %>
-						</h3>
-					</div>
-					<div class="excerpt">
-						<%= top_stories_w1[i].except %>
-					</div>
-					<div class="time">
-						<%= top_stories_w1[i].created_at %>
-					</div>
-				</div>
-		<%	}  %>
-
-		</div>
-
-		<div class="news_sport_c mid">
-			<div class="n_sport clearfix">
-				<h2>
-					体育
-				</h2>
-				<div class="card_c">
-					<div class="section_card">
-						<% for (var i = 0; i < 4; i++) { 
-							if (sport_newses_w0[0]) {%>
-							<div class="news-card">
-								<div class="pic">
-									<img src="/img/<%= sport_newses_w0[i].news_pic %>">
-								</div>
-								<a href="#" class="news-card-a">
-								<div class="tit">
-									<h3>
-										<%= sport_newses_w0[i].title %>
-									</h3>
-								</div>
-								<div class="excerpt">
-									<%= sport_newses_w0[i].except %>
-								</div>
-								<div class="time">
-									<%= sport_newses_w0[i].created_at %>
-								</div>
-								</a>
-							</div>
-						
-						<% } 
-						}%>
-					</div>
-				</div>
-				<div class="ad_sec">
-					<ul>
-						<% for (var i = 0; i < 4; i++) { 
-							if (sport_newses_w0[i]) {%>
-							<a href="#">
-							<li>
-								<img src="/img/<%= sport_newses_w0[i].news_pic %>">
-								<h3><%= sport_newses_w0[i].title %></h3>
-							</li>
+				<ul>
+					<% if (comments[0] !== undefined) { 
+		  				comments.forEach(function(comment){  %>
+					<li>
+						<div class="name">
+							<a href="#" class="">
+								<%= comment.author_id.name %>
 							</a>
-						<% }
-						} %>
-
-					</ul>
-				</div>
+						</div>
+						<div class="single-comment">
+							 <%- comment.content %>	
+						</div>
+						<div class="time">
+							<div class="date"><%= comment.fromNow %></div>
+						</div>
+					</li>
+					<% } );
+				  }   %>
+				</ul>
 			</div>
-			
-		</div>		
-
-		<div class="news-section clearfix mid">
+		</div>
+		<div class="sec news-section clearfix">
 			<div class="n_s">
 
 				<div class="section">
@@ -235,42 +177,33 @@
 					</ul>
 				</div>
 
-
-				
-				<div class="section">
-					<div class="tit clearfix">
-						<h3>今日头条title</h3>
-					</div>
-					<ul>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-					</ul>
-				</div>
-				
-				<div class="section">
-					<div class="tit clearfix">
-						<h3>今日头条title</h3>
-					</div>
-					<ul>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-					</ul>
-				</div>
 			</div>
 
-		</div>
 
+			<div class="ad_sec">
+				<ul>
+					<li>
+						<img src="img/1.jpg">
+						<h3>标题标题标题标题标题标题</h3>
+					</li>
+					<li>
+						<img src="img/1.jpg">
+						<h3>标题标题标题标题标题标题标题标题标题标题题标题标题标题标题标题标题题标题标题标题标题标题标题</h3>
+					</li>
+					<li>
+						<img src="img/1.jpg">
+						<h3>标题标题</h3>
+					</li>
+					<li>
+						<img src="img/1.jpg">
+						<h3>标题标题</h3>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
+
+
 
 	<footer>
 		<div class="footer mid">
@@ -321,7 +254,7 @@
 				<li>
 					<ul>
 						<li>页脚页脚</li>
-						<li>页脚页脚<%= error %></li>
+						<li>页脚页脚</li>
 					</ul>
 				</li>
 			</ul>
@@ -377,17 +310,30 @@
 			</div class="login_foot">
 			<a href="#" class="close"></a>
 		</div>
+	
 	</div>
-
 <% if(user) { %>
 <script>
 	!function(){
 		$('.login')
 		.removeClass('login-b')
 		.addClass('user-m');
+		$('#comment-btn').click(function(){
+			var url = '/news/comment/' + $('#comment-btn').attr('newsid');
+			$.post(url,{
+				content: $('#com-content').val();
+			})
+			.done(function(result){
+				alert('s')
+			})
+			.fail(function(result){
+				alert('f')
+			})
+		})
 	}();
 </script>
 <% } %>
 <script src="/js/desktop/main.js"></script>
+
 
 <%- include('footer') %>

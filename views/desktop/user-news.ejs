@@ -7,19 +7,23 @@
 	<header>
 		<div class="header clearfix">
 			<div class="logo">
-				<h1><a href="#">新闻网</a></h1><h3>个人信息</h3>
+				<h1><a href="/news">新闻网</a></h1><h3>个人信息</h3>
 			</div>
 			<div class="user">
 				<div class="ui dropdown">
 				  <div class="iconfont">&#xf00cc;</div>
 				  <div class="menu">
 				    <a href="/news/create" class="item">提交新闻</a>
-				    <a href="/user" class="item"> 个人信息 </a>
+			        <% if (user.privilege === 'admin') { %>
+				    <a href="/user/admin" class="item">后台管理</a>
+				    <% }else{ %>
+				    <a href="/user" class="item">个人信息</a>
+				    <% } %>
 				    <a href="/isignout" class="item"> 退出登录</a>
 				  </div>
 				</div>
 				<div class="avatar">
-					<a href="#"><img src="/img/<%= user.avatar %>"></a>
+					<a href="/user"><img src="/img/<%= user.avatar %>"></a>
 				</div>
 			</div>
 		</div>
@@ -35,7 +39,11 @@
 					</div>
 					<ul>
 						<li><a href="/user">个人档案 </a></li>
-						<li><a href="/user/news/<%= user._id %>">文章提交情况</a></li>
+						<% if (user.privilege === 'admin') { %>
+					     <li><a href="/user/admin">文章管理</a></li>
+					    <% }else{ %>
+					    <li><a href="/user/news/<%= user._id %>">文章提交情况</a></li>
+					    <% } %>
 						<li><a href="#">个性名片</a></li>
 						<li><a href="#">专栏设置</a></li>
 					</ul>
