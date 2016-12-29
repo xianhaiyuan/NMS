@@ -20,11 +20,11 @@ abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,d
 
 @font-face {
   font-family: 'icon';
-  src: url('fonts/iconfont.eot');
-  src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'),
-  url('fonts/iconfont.woff') format('woff'),
-  url('fonts/iconfont.ttf') format('truetype'),
-  url('fonts/iconfont.svg#iconfont') format('svg');
+  src: url('./fonts/iconfont.eot');
+  src: url('./fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('./fonts/iconfont.woff') format('woff'),
+  url('./fonts/iconfont.ttf') format('truetype'),
+  url('./fonts/iconfont.svg#iconfont') format('svg');
 }
 /*<i class="icon_user">&#xe615;</i>*/
 .iconfont{    

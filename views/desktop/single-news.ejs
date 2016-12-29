@@ -124,10 +124,10 @@
 				</p>
 			</div>
 			<div class="comment">
-				<textarea name="content" id="com-content" form="submit"></textarea>
-				<form methor="post" id="submit" action="/news/comment/<%= news._id %>">
+				<form methor="post" id="c-submit" action="/news/<%= news._id %>/icomment">
+				<textarea name="content" id="com-content" form="c-submit"></textarea>
 				<div class="com-foot clearfix">
-					<button class="btn" id="comment-btn" form="submit" newsid=<%= news._id %>>
+					<button class="btn" id="comment-btn" form="c-submit" newsid=<%= news._id %>>
 					发表评论
 					</button>
 					<div class="comment-count">
@@ -319,7 +319,7 @@
 		.removeClass('login-b')
 		.addClass('user-m');
 		$('#comment-btn').click(function(){
-			var url = '/news/comment/' + $('#comment-btn').attr('newsid');
+		/*	var url = '/news/comment/' + $('#comment-btn').attr('newsid');
 			$.post(url,{
 				content: $('#com-content').val();
 			})
@@ -328,8 +328,9 @@
 			})
 			.fail(function(result){
 				alert('f')
-			})
-		})
+			}) */
+			$('#c-submit').submit();
+		}) 
 	}();
 </script>
 <% } %>

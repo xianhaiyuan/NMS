@@ -175,11 +175,9 @@ router.get('/:newsID/icomment', function(req, res, next){
 			});
 		})
 		.catch(next);
-	
-
 });
 
-router.post('/comment/:newsID', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
+router.post('/:newsID/icomment', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
 	console.log("in")
 	var author_id = req.session.user._id;
 	var newsID = req.params.newsID;
