@@ -213,7 +213,7 @@ label{
 	margin-right: 1rem;
 }
 
-.main .ui.dropdown{
+.main-box .ui.dropdown{
 	margin: 0;
 }
 
@@ -317,7 +317,8 @@ label{
 /*footer-style*/
 
 footer{
-	position: fixed;
+	float: left;
+    margin-top: 2rem;
 	bottom: 0;
 	width: 100%;
 	background-color: #F3F3F3;

@@ -1,4 +1,5 @@
 <%- include('header') %>
+<link rel="stylesheet" href="/css/desktop/page-style.css">
 <link rel="stylesheet" href="/css/desktop/login.css">
 <link rel="stylesheet" href="/css/desktop/single-news.css">
 <title>single-news</title>
@@ -124,7 +125,7 @@
 				</p>
 			</div>
 			<div class="comment">
-				<form methor="post" id="c-submit" action="/news/<%= news._id %>/icomment">
+				<form methor="post" id="c-submit">
 				<textarea name="content" id="com-content" form="c-submit"></textarea>
 				<div class="com-foot clearfix">
 					<button class="btn" id="comment-btn" form="c-submit" newsid=<%= news._id %>>
@@ -164,16 +165,12 @@
 
 				<div class="section">
 					<div class="tit clearfix">
-						<h3>今日头条title</h3>
+						<h3>今日头条</h3>
 					</div>
 					<ul>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
-						<li>今日头条今日头条今日头条</li>
+						<% top_stories.forEach(function(n){ %>
+							<li><a href="/news/<%= n._id %>"><%= n.title %></a></li>
+						<% }) %>
 					</ul>
 				</div>
 
@@ -183,19 +180,19 @@
 			<div class="ad_sec">
 				<ul>
 					<li>
-						<img src="img/1.jpg">
+						<img src="/img/2.jpg">
 						<h3>标题标题标题标题标题标题</h3>
 					</li>
 					<li>
-						<img src="img/1.jpg">
+						<img src="/img/3.jpg">
 						<h3>标题标题标题标题标题标题标题标题标题标题题标题标题标题标题标题标题题标题标题标题标题标题标题</h3>
 					</li>
 					<li>
-						<img src="img/1.jpg">
+						<img src="/img/6.jpg">
 						<h3>标题标题</h3>
 					</li>
 					<li>
-						<img src="img/1.jpg">
+						<img src="/img/5.jpg">
 						<h3>标题标题</h3>
 					</li>
 				</ul>
@@ -312,28 +309,97 @@
 		</div>
 	
 	</div>
-<% if(user) { %>
+<% if (user) { %>
 <script>
 	!function(){
 		$('.login')
 		.removeClass('login-b')
 		.addClass('user-m');
 		$('#comment-btn').click(function(){
-		/*	var url = '/news/comment/' + $('#comment-btn').attr('newsid');
+			var url = '/news/' + $('#comment-btn').attr('newsid') + '/comment';
 			$.post(url,{
-				content: $('#com-content').val();
+				content: $('#com-content').val()
 			})
-			.done(function(result){
-				alert('s')
+			.done(function(data){
+				if (data === 'suc') {
+					console.log('yy');
+					window.location.href = 	'/news/' + $('#comment-btn').attr('newsid');				
+				}
 			})
-			.fail(function(result){
-				alert('f')
-			}) */
-			$('#c-submit').submit();
+			.fail(function(data){
+				alert(data)
+			}) 
 		}) 
 	}();
 </script>
 <% } %>
+<script>
+	!function(){
+		var content = [
+			  /*{ title: 'Andorra' },
+			  {	title: '男子酒后大闹KTV点燃汽油，4名警察被烧伤',}*/
+			  // etc
+			];
+		var single_news = {};
+		<% if(newses){ 
+			newses.forEach(function(news){ %>
+				content.push({ 
+				title: '<%= news.title %>' ,
+				url: '/news/<%= news._id %>'
+			//	description: 
+				});
+				single_news['<%= news.title %>'] = '<%= news._id %>';
+			<% });} %>
+
+
+			$('.search_icon').click(function(){
+				console.log(single_news[$('.prompt').val()]);
+				window.location.href = '/inews/'+single_news[$('.prompt').val()];
+			});  
+
+
+			$('.ui.search')
+		  .search({
+		    source: content,
+		    apiSettings: {
+		    	onResponse: function(newsResponse){
+		    		var query = $('.ui.search').search('get value');
+		    		var response = {
+		    			results: {}
+		    		};
+		    		$.each(newsResponse.items, function(index, item){
+		    			var
+				            language   = item.language || 'Unknown',
+				            maxResults = 8
+				          ;
+				         if(index >= maxResults) {
+				            return false;
+				          }
+				          if(response.results[language] === undefined) {
+				            response.results[language] = {
+				              name    : language,
+				              results : [],
+				            };
+				          }
+				          response.results[language].results.push({
+					            title       : item.name,
+					            description : item.description,
+					            url         : item.html_url
+				          });
+				        });
+				        return response;
+		    		}, 
+	    		fields: {
+				      results : 'items',
+				      title   : 'name',
+				      url     : 'html_url'
+				    },
+		    	}
+		    	
+		    }
+		  );
+	}()
+</script>
 <script src="/js/desktop/main.js"></script>
 
 

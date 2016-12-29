@@ -243,6 +243,10 @@ header{
 	color: #aaa;
 }
 
+.ui.search>.results{
+	margin-top: 0;
+}
+
 
 /*header-search-style*/
 
@@ -403,6 +407,15 @@ nav{
 	height: 100%;
 }
 
+.top_w1 .tit a{
+	color: #000;
+	transition: all .8s ease;
+}
+
+.top_w1 .tit a:hover{
+	color: rgb(94, 116, 237);
+}
+
 .excerpt{
 	height: 87px;
 	overflow: hidden;
@@ -413,6 +426,10 @@ nav{
 	padding: .5rem 1rem 0rem 1rem;
 	float: left;
 	width: 70%;
+	height: 100%;
+}
+
+.top_w1 .pic div{
 	height: 100%;
 }
 
@@ -535,6 +552,14 @@ nav{
 .ad_sec ul li:nth-child(1){
 	padding-top: 0;
 	border-top: 0;
+}
+
+.ad_sec ul a{
+	color: #000;
+}
+
+.ad_sec ul a:hover{
+	color: #f00;
 }
 
 .ad_sec img{

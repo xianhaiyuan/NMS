@@ -260,6 +260,10 @@ header{
 	color: #aaa;
 }
 
+.ui.search>.results{
+	margin-top: 0;
+}
+
 
 /*header-search-style*/
 

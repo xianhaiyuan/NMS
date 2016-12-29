@@ -1,5 +1,6 @@
 <%- include('header') %>
 <link rel="stylesheet" href="/css/desktop/create.css">
+<link rel="stylesheet" href="/css/desktop/page-style.css">
 <title>nms-create</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
 		</div>
 	</header>
 
-	<div class="main mid">
+	<div class="main-box mid clearfix">
 		<form enctype="multipart/form-data" method="post" name="a-f" id="a-f" action="/news"></form>
 		<div class="tit">
 			<input type="text" name="title" id='title' form="a-f" required autofocus placeholder="文章题目">
@@ -53,7 +54,7 @@
 		</div>
 		<div class="content">
 			<textarea name="content" form='a-f'></textarea>
-			<div class="pre-view">
+			<div class="pre-view main">
 			</div>
 		</div>
 	</div>

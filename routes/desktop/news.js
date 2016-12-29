@@ -105,12 +105,14 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 			PostModel.getNewsById(newsID),
 			CommentModel.getComments(newsID),
 			PostModel.getNewsByType_w0_limit8('top-stories'),
-			PostModel.incPv(newsID)
+			PostModel.incPv(newsID),
+			PostModel.getNewses()
 		])
 	.then(function(result){
 		var news = result[0];
 		var comments = result[1];
 		var top_stories = result[2];
+		var newses = result[4];
 		if (!news) {
 			throw new Error('改文章不存在');
 		}
@@ -118,7 +120,8 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 		res.render('desktop/single-news', {
 			top_stories: top_stories,
 			news: news,
-			comments: comments
+			comments: comments,
+			newses: newses
 		});
 	})
 	.catch(next);
@@ -177,8 +180,7 @@ router.get('/:newsID/icomment', function(req, res, next){
 		.catch(next);
 });
 
-router.post('/:newsID/icomment', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
-	console.log("in")
+router.post('/:newsID/comment', checkLogin_Ajax, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
 	var author_id = req.session.user._id;
 	var newsID = req.params.newsID;
 	var content = req.fields.content;
@@ -189,7 +191,7 @@ router.post('/:newsID/icomment', checkLogin, function(req, res, next){ // POST /
 	};
 	CommentModel.create(comment).then(function(){
 		req.flash('success', '留言成功');
-		res.redirect('back');
+		res.send('suc');
 	})
 	.catch(next);
 });

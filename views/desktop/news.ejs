@@ -111,20 +111,26 @@
 
 		<div class="top_stories_w1 clearfix mid">
 			<div class="top_w1">
+				
 				<div class="tit">
 					<h1>
-						<%= top_stories_w1[0].title %>
+						<a href="/news/<%= top_stories_w1[0]._id %>">
+							<%= top_stories_w1[0].title %>
+						</a>
 					</h1>
 					<div class="excerpt">
+
 						<%= top_stories_w1[0].except %>
 					</div>
 					<div class="time">
 						<%= top_stories_w1[0].created_at %>
 					</div>
 				</div>
-				<div class="pic">
-					<img src="/img/<%= top_stories_w1[0].news_pic %>">
-				</div>
+				<a href="/news/<%= top_stories_w1[0]._id %>" class="pic" >
+					<div >
+						<img src="/img/<%= top_stories_w1[0].news_pic %>">
+					</div>
+				</a>
 			</div>
 			
 			<section class="ad">
@@ -135,7 +141,7 @@
 					<ul>
 						<% top_stories_w0.forEach(function (n) {
 						  	if (n.permission === 'y') {  %>
-						    <a href="#"><li><%= n.title %></li></a>
+						    <a href="/news/<%= n._id %>"><li><%= n.title %></li></a>
 						<% }  
 						}) %>	
 					</ul>
@@ -173,13 +179,13 @@
 				</h2>
 				<div class="card_c">
 					<div class="section_card">
-						<% for (var i = 0; i < 4; i++) { 
+						<% for (var i = 0; i < 1; i++) { 
 							if (sport_newses_w0[0]) {%>
 							<div class="news-card">
 								<div class="pic">
 									<img src="/img/<%= sport_newses_w0[i].news_pic %>">
 								</div>
-								<a href="#" class="news-card-a">
+								<a href="/news/<%= sport_newses_w0[i]._id %> " class="news-card-a">
 								<div class="tit">
 									<h3>
 										<%= sport_newses_w0[i].title %>
@@ -202,7 +208,7 @@
 					<ul>
 						<% for (var i = 0; i < 4; i++) { 
 							if (sport_newses_w0[i]) {%>
-							<a href="#">
+							<a href="/news/<%= sport_newses_w0[i]._id %>">
 							<li>
 								<img src="/img/<%= sport_newses_w0[i].news_pic %>">
 								<h3><%= sport_newses_w0[i].title %></h3>
@@ -388,6 +394,73 @@
 	}();
 </script>
 <% } %>
+<script>
+	!function(){
+		var content = [
+			  /*{ title: 'Andorra' },
+			  {	title: '男子酒后大闹KTV点燃汽油，4名警察被烧伤',}*/
+			  // etc
+			];
+		var single_news = {};
+		<% if(newses){ 
+			newses.forEach(function(news){ %>
+				content.push({ 
+				title: '<%= news.title %>' ,
+				url: '/news/<%= news._id %>'
+			//	description: 
+				});
+				single_news['<%= news.title %>'] = '<%= news._id %>';
+			<% });} %>
+
+
+			$('.search_icon').click(function(){
+				console.log(single_news[$('.prompt').val()]);
+				window.location.href = '/inews/'+single_news[$('.prompt').val()];
+			});  
+
+
+			$('.ui.search')
+		  .search({
+		    source: content,
+		    apiSettings: {
+		    	onResponse: function(newsResponse){
+		    		var query = $('.ui.search').search('get value');
+		    		var response = {
+		    			results: {}
+		    		};
+		    		$.each(newsResponse.items, function(index, item){
+		    			var
+				            language   = item.language || 'Unknown',
+				            maxResults = 8
+				          ;
+				         if(index >= maxResults) {
+				            return false;
+				          }
+				          if(response.results[language] === undefined) {
+				            response.results[language] = {
+				              name    : language,
+				              results : [],
+				            };
+				          }
+				          response.results[language].results.push({
+					            title       : item.name,
+					            description : item.description,
+					            url         : item.html_url
+				          });
+				        });
+				        return response;
+		    		}, 
+	    		fields: {
+				      results : 'items',
+				      title   : 'name',
+				      url     : 'html_url'
+				    },
+		    	}
+		    	
+		    }
+		  );
+	}()
+</script>
 <script src="/js/desktop/main.js"></script>
 
 <%- include('footer') %>
