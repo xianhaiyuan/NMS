@@ -1,8 +1,408 @@
+l, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+*,*:before,*:after{
+	box-sizing: border-box;
+}
+:root{
+	--fontSclae: 1px;
+	--fontSmall: 14px;
+	--fontNormal: 1rem;
+	--fontMiddle: 1.2rem;
+	--fontLarge: 1.4rem;
+	--fontMain: 1.1rem;
+
+	--max-wid: 1024px;
+	--logoWidth: 150px;
+	--hover-link: #D10C20;
+
+	--paddingNormal: .5rem;
+
+	--h2: 2rem;
+}
+
+@media screen and (min-width:1024px) and  (max-width:1367px){
+	body{
+		--fontScale: 1px;
+	}
+}
+
+@media screen and (min-width:640px) and (max-width:1024px){
+	body{
+		--fontScale: 3px;
+		--logoWidth: 120px;
+		--max-wid: 1024px;
+	}
+}
+
+@media screen and (max-width:640px){
+	body{
+		--fontScale: 3px;
+		--logoWidth: 120px;
+		--max-wid: 640px;
+	}
+	.n_b{
+		width: 640px;
+	}
+}
+
+.clearfix::after{
+	clear: both;
+	content: "";
+	display: table;
+}
+
+ul li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+a:hover{
+	cursor: pointer;
+	text-decoration: none;
+}
+
+body{
+	font: 400 14px/1.5 "\5FAE\8F6F\96C5\9ED1",Helvetica;
+}
+
+@font-face {
+  font-family: 'icon';
+  src: url('fonts/iconfont.eot');
+  src: url('fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/iconfont.woff') format('woff'),
+  url('fonts/iconfont.ttf') format('truetype'),
+  url('fonts/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{    
+  font-family:"icon" !important;
+  font-size:calc(1.2rem - var(--fontScale));font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  /*color: var(--iconfont-color);*/
+}
+
+h1{
+	font-size: 2.1rem;
+}
+
+h3{
+	font-size: 1.8rem;
+}
+
+.mid{
+	width: 80%;
+	margin: 2rem auto;
+}
+
+
+/*header-style*/
+
+header{
+
+}
+
+.header{
+	height: 70px;
+	padding-left: 3rem;
+	border-bottom: 1px solid #ccc;
+
+}
+
+.logo{
+	float: left;
+	height: 100%;
+}
+
+.logo h1, .logo h3{
+	float: left;
+	line-height: 70px;
+	height: 100%;
+	font-weight: 700;
+
+}
+
+.logo h1 a{
+	color: rgba(255,0,0,.8);
+	transition: all .8s ease;
+}
+
+.logo h1 a:hover{
+	color: rgba(255,0,0,1);
+	cursor: pointer;
+}
+
+.logo h3{
+	font-style: italic;
+	margin-left: 4rem;
+	color: #aaa;
+}
+
+.user{
+	float: right;
+	margin-right: 3rem;
+	height: 100%;
+}
+
+.user .dropdown{
+	position: relative;
+	/*height: 60px;*/
+	float: left;
+	transition: all .8s ease;
+	/*overflow: hidden;*/
+}
+
+.user .dropdown:hover{
+	color: red;
+	cursor: pointer;
+	overflow: visible;
+}
+
+.avatar{
+	float: left;
+	margin-left: 4rem;
+	transform: translateY(100%);
+	margin-top: -15px;
+}
+
+.avatar a{
+	display: block;
+	
+}
+
+.avatar img{
+	display: block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	
+}
+
+.ui.dropdown{
+	float: left;
+	margin-top: 1.5rem;
+}
+/*header-style*/
+
+/*main-style*/
+
+/*sec-style*/
+
+.sec-c{
+	float: left;
+	width: 18%;
+}
+
+.news-status{
+	float: right;
+	width: 70%;
+}
+
+.sec{
+	border: 1px solid #ccc;
+	border-radius: 5px 5px 0 0;
+}
+
+.sec .tit{
+	font-size: 1.2rem;
+	background-color: rgb(244, 105, 105);
+	line-height: 30px;
+	display: block;
+	padding: .5rem;
+	padding-left: 1rem;
+	color: #fff;
+}
+
+.sec ul li{
+	height: 40px;
+	line-height: 40px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-top: 1px solid #aaa;
+}
+
+.sec ul li a{
+	color: #666;
+	transition: all .5s ease;
+}
+
+.sec ul li a:hover{
+	color: #f00;	
+}
+
+.sec ul li:nth-child(1){
+	border: 0;
+}
+
+
+/*sec-style*/
+
+/*user-c-stylenews-status*/
+
+
+.news-status{
+	margin-left: 4rem;
+}
+
+.news-status label{
+	float: left;
+	font-weight: 700;
+	font-size: 1.2rem;
+	height: 100%;
+}
+
+.news-status ul li{
+	float: left;
+	width: 100%;
+	height: 100%;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-top: 1px solid #ccc;
+}
+
+.news-status ul li:nth-child(1){
+	border: 0;
+}
+
+.news-status .tit{
+	padding-bottom: 1rem;
+	border-bottom: 3px solid #aaa;
+	margin-bottom: 2rem;
+	font-size: 1.8rem;
+}
+
+.n-s-c{
+	height: 100%;
+}
+
+.n-s-c .news-tit{
+	font-size: 1.2rem;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+}
+
+.n-s-c .status{
+    float: right;
+    font-size: 1rem;
+    height: 100%;
+    line-height: 22px;
+    color: #aaa;
+}
+
+.n-s-c .btn{
+	width: 50px;
+	float: right;
+	height: 100%;
+	line-height: 22px;
+	/*padding: .5rem;*/
+	background-color: rgba(255,0,0,.6);
+	color: #fff;
+	transition: all .8s ease;
+	border-radius: 3px;
+}
+
+.n-s-c .btn a{
+	text-align: center;
+	width: 100%;
+	float: left;
+	color: #fff;
+}
+
+.n-s-c .btn:hover{
+	background-color: rgba(255,0,0,1);
+}
+
+/*news-status*/
+
+
+/*main-style*/
+
+
+/*footer-style*/
+
+footer{
+	width: 100%;
+	float: left;
+	background-color: #4C4C4C;
+	margin-top: 2rem;
+	font-size: calc(var(--fontMain) - var(--fontScale));
+}
+
+.footer{
+	color: #fff;
+	padding-bottom: 1rem;
+}
+
+.footer h2{
+	font-size: 1.8rem;
+	margin-bottom: 1rem;
+}
+
+.foot_ul{
+	display: flex;
+	height: 110px;
+	justify-content: center;
+	align-items: center;
+}
+
+.foot_ul>li{
+	height: 100%;
+}
+
+.foot_ul li ul li{
+	margin-bottom: .5rem;
+}
+
+.foot_ul li ul{
+	height: 100%;
+	padding-left: 1rem;
+	border-left: 1px solid #fff;
+}
+
+.foot_ul li:nth-child(1) ul{
+	border-left: 0;
+	padding-left: 0;
+}
+
+.foot_ul>li{
+	flex: auto;
+}
+
+.copy_r{
+	text-align: center;
+	margin-top: 1.5rem;
+	padding-top: 1rem;
+	border-top: 1px solid #fff;
+}
+
+/*footer-style*/
+
 .news-tit, label{
 	line-height: 38px;
 }
 .news-status ul li{
-	height: 67px;
+	height: 100%;
 }
 .permission{
 	float: right;
@@ -12,7 +412,7 @@
 	float: left;
 }
 .permission label{
-	font-size: 1rem;
+	font-size: .5rem;
 	margin-right: 1rem;
 	font-weight: 400;
 
@@ -23,9 +423,8 @@
 }
 .submit{
 	float: left;
-	height: 100%;
 	padding: .5rem;
-	margin-left: 1rem;
+	margin-left: .5rem;
 	color: #fff;
 	background-color: rgba(255,0,0,.8);
 	border-radius: 3px;
@@ -34,5 +433,6 @@
 }
 .submit:hover{
 	color: #fff;
+	cursor: pointer;
 	background-color: rgba(255,0,0,1);
 }

@@ -1,12 +1,13 @@
 <%- include('header') %>
-<link rel="stylesheet" href="/css/desktop/user.css">
-<title>user</title>
+
+	<link rel="stylesheet" type="text/css" href="/css/desktop/user-news.css">
+	<title>user-news</title>
 </head>
 <body>
 	<header>
 		<div class="header clearfix">
 			<div class="logo">
-				<h1><a href="/news">新闻网</a></h1><h3>个人信息</h3>
+				<h1><a href="#">新闻网</a></h1><h3>个人信息</h3>
 			</div>
 			<div class="user">
 				<div class="ui dropdown">
@@ -34,48 +35,44 @@
 					</div>
 					<ul>
 						<li><a href="/user">个人档案 </a></li>
-						<li><a href="/user/news/<%= user._id %>">文章提交情况</a></li><%= user.author_id %>
+						<li><a href="/user/news/<%= user._id %>">文章提交情况</a></li>
 						<li><a href="#">个性名片</a></li>
 						<li><a href="#">专栏设置</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="user-c">
-				<form enctype="multipart/form-data" method="post" name="userinfo" action="" id="userinfo"></form>
+			<div class="news-status">
+				<form enctype="multipart/form-data" method="post" name="userinfo" action=""></form>
 				<div class="tit">
-					常规设置
+					文章提交情况
 				</div>
 				<ul class="clearfix">
-					<li>
-						<div class="username">
-							<label>姓名:</label>
-							<input type="text" id="name" name="name" value="<%= user.name %>" form="userinfo">
-						</div>
-					</li>
-					<li>
-						<div class="avatar-c">
-					        <label>头像:</label>
-					        <div class="avatar-pic">
-					        	选择文件
-					        	<input type="file" id="avatar" name="avatar" form="userinfo">
-					        </div>
-				     	</div>
-					</li>
-					<li>
-						<div class="resume">
-					        <label>个人简介:</label>
-					        <textarea name="resume" id="resume" rows="5" form="userinfo"><%= user.resume %></textarea>
-				      </div>
-					</li>
+					<% if (newses) { 
+						newses.forEach(function(news){  %>
+							<li>
+								<div class="n-s-c clearfix" name="1">
+									<div class="news-tit">
+										<%= news.title %>
+									</div>
+									<div class="status">
+										<% if (news.permission === 'n') { %>
+											(审核未通过)
+										<% } %>
+									</div>
+									<% if (news.permission === 'y') { %>
+									<div class="btn" news_id="<%= news._id %>">
+										<div>删除</div>
+									</div>
+									<% } %>
+								</div>
+							</li>
+					<%	});
+					} %>
 				</ul>
-				<div class="btn">
-					保存设置
-					<input type="submit" id="submit" name="submit" form="userinfo">
-				</div>
-				<div class="err"></div>
 			</div>
 		</div>
 	</div>
+
 	<footer>
 		<div class="footer mid">
 			<h2>
@@ -134,34 +131,25 @@
 			</div>
 		</div>
 	</footer>
-	
-</body>
-
-
-
-
 
 <script>
 	!function(){
 		$('.ui.dropdown').dropdown();
-		$('#submit').click(function(){
-			var name = $('#name');
-			var avatar = $('#avatar');
-			var resume = $('#resume');
-			if (!(name.val().length >= 1 && name.val().length <=10)){
-		    $(".err").html('姓名请限制在 1-10 个字符。');
-		    return false;
-		  }
-	/*	  if($("#avatar").val() === ""){
-		    $(".err").html('缺少头像');
-		    return false;
-		  } */
-		  if(!(resume.val().length >= 1 && resume.val().length <=30)){
-		    $(".err").html('个人简介请限制在 1-30 个字符'); 
-		    return false;
-		  }
-		  $('#userinfo').submit();
-		});
+		$('.btn').click(function(){
+			var that = $(this);
+			$.post('/user/news',{
+				news_id: $(this).attr('news_id')
+			})
+			.done(function(data){
+				if (data === 'success'){
+					that.parent('.n-s-c').parent().remove();
+				}
+			})
+			.fail(function(){
+				alert('fail')
+			})
+		})
 	}()
 </script>
+
 <%- include('footer') %>

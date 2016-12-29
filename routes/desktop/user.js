@@ -3,12 +3,39 @@ var router = express.Router();
 var path = require('path');
 var checkLogin = require('../../middlewares/desk-check').checkLogin;
 var UserModel = require('../../models/users');
+var PostModel = require('../../models/news');
 
-router.get('/', checkLogin function(req, res, next){
+router.get('/', checkLogin, function(req, res, next){
 	res.render('desktop/user');
 });
-router.get('/news', checkLogin, function(req, res, next){
-	res.render('desktop/user_news');
+router.get('/news/:author_id', checkLogin, function(req, res, next){
+	var author_id = req.params.author_id;
+	PostModel.getNewsByAuthorId(author_id)
+	.then(function(result){
+		res.render('desktop/user-news',{
+			newses: result
+		});
+	});
+});
+router.post('/news', checkLogin, function(req, res, next){
+	var news_id = req.fields.news_id;
+	var author_id = req.session.user._id;
+	PostModel.delNewsById(news_id, author_id)
+	.then(function(result){
+		res.send('success');
+	})
+});
+router.get('/admin', checkLogin, function(req, res, next){
+	PostModel.getAllNews()
+	.then(function(result){
+		res.render('desktop/admin',{
+			newses: result
+		});
+	})
+})
+router.post('/admin', checkLogin, function(req, res, next){
+	res.render('desktop/admin',{
+		});
 })
 router.post('/', checkLogin, function(req, res, next){
 	var _id = req.session.user._id;

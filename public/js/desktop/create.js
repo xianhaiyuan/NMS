@@ -11,7 +11,7 @@
     	var pic = $('#news-pic');
     	var publish = $('#publish_house');
     	var content = $('.content textarea');
-    	if (tit.val().length < 0) {
+    	if (tit.val().length < 0 || tit.val() === "") {
     		alert('请填写新闻标题！');
     		return false;
     	}
@@ -19,11 +19,11 @@
     		alert('请上传新闻图片！');
     		return false;
     	}
-    	if (publish.val().length < 0) {
+    	if (publish.val().length < 0 || publish.val() === "") {
     		alert('请上填写出版社！');
     		return false;
     	}
-    	if (content.val().length < 0) {
+    	if (content.val().length < 0 || content.val() === "") {
     		alert('请上填写新闻内容！');
     		return false;
     	}

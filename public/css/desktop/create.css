@@ -331,6 +331,7 @@ footer .btn{
 }
 
 footer .btn:hover{
+	cursor: pointer;
 	background-color: rgba(255,0,0,1);
 }
 

@@ -41,9 +41,27 @@ module.exports = {
 	create: function(news){
 		return News.create(news).exec();
 	},
+	getAllNews: function getAllNews(){
+		return News
+		.find({})
+		.populate({path: 'author_id', model: 'User'})
+		.addCreatedAt()
+		.addCommentsCount()
+		.contentToHtml()
+		.exec();;
+	},
 	getNewsById: function getNewsById(newsid){
 		return News
 		.findOne({_id: newsid})
+		.populate({path: 'author_id', model: 'User'})
+		.addCreatedAt()
+		.addCommentsCount()
+		.contentToHtml()
+		.exec();
+	},
+	getNewsByAuthorId: function getNewsByAuthorId(author_id){
+		return News
+		.find({author_id: author_id})
 		.populate({path: 'author_id', model: 'User'})
 		.addCreatedAt()
 		.addCommentsCount()
