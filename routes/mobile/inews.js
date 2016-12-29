@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var PostModel = require('../models/news');
-var CommentModel = require('../models/comments');
-var checkLogin = require('../middlewares/check').checkLogin;
-var checkLogin_Ajax = require('../middlewares/check').checkLogin_Ajax;
+var PostModel = require('../../models/news');
+var CommentModel = require('../../models/comments');
+var checkLogin = require('../../middlewares/check').checkLogin;
+var checkLogin_Ajax = require('../../middlewares/check').checkLogin_Ajax;
 var path = require('path');
 var moment = require('moment');
 
@@ -109,12 +109,17 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 		if (!news) {
 			throw new Error('改文章不存在');
 		}
-		news.post_time = moment(news.post_time).format('YYYY-MM-DD HH:mm');
-		res.render('mobile/isingle-news', {
-			top_stories: top_stories,
-			news: news,
-			comments: comments
-		});
+		if (news.permission === 'y'){
+			news.post_time = moment(news.post_time).format('YYYY-MM-DD HH:mm');
+			
+			res.render('mobile/isingle-news', {
+				top_stories: top_stories,
+				news: news,
+				comments: comments
+			});
+		}else{
+			res.render('mobile/i404');	
+		}
 	})
 	.catch(next);
 });

@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var PostModel = require('../models/news');
-var CommentModel = require('../models/comments');
-var checkLogin = require('../middlewares/check').checkLogin;
-var checkLogin_Ajax = require('../middlewares/check').checkLogin_Ajax;
+var PostModel = require('../../models/news');
+var CommentModel = require('../../models/comments');
+var checkLogin = require('../../middlewares/desk-check').checkLogin;
+var checkLogin_Ajax = require('../../middlewares/desk-check').checkLogin_Ajax;
 var path = require('path');
 var moment = require('moment');
 
@@ -38,6 +38,7 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 	var content = req.fields.content;
 	var categories = req.fields.categories;
 	var post_time = new Date();
+	console.log(content);
 	var news_pic = req.files.news_pic.path.split(path.sep).pop();
 	var publish_house = req.fields.publish_house;
 	try{
@@ -70,13 +71,13 @@ router.post('/', checkLogin, function(req, res, next){ // POST /news 发表一�
 	.then(function(result){
 		news = result.ops[0];
 		req.flash('success', '发表成功');
-		res.redirect(`/inews/${news._id}`);
+		res.redirect(`/news/create`);
 	})
 	.catch(next);
 });
 
-router.get('/icreate', checkLogin, function(req, res, next){ // GET /news 所有用户或者特定用户的新闻页
-	res.render('mobile/icreate');
+router.get('/create', checkLogin, function(req, res, next){ // GET /news 所有用户或者特定用户的新闻页
+	res.render('desktop/create');
 });
 router.get('/cate/:newsCategories', function(req, res, next){
 	var categories = req.params.newsCategories;

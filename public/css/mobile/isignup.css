@@ -115,6 +115,7 @@ form{
 	margin: .1rem;
 }
 textarea{
+	padding-left: 10px;
 	width: 100%;
 	font-size: calc(var(--fontSize) + var(--fontScale) * 2);
 }

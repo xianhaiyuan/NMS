@@ -1,0 +1,67 @@
+<%- include('header') %>
+<link rel="stylesheet" href="/css/desktop/create.css">
+<title>nms-create</title>
+</head>
+<body>
+	<header>
+		<div class="header clearfix">
+			<div class="logo">
+				<h1><a href="/news">新闻网</a></h1><h3>写新闻</h3>
+			</div>
+			<div class="user">
+				<div class="ui dropdown">
+				  <div class="iconfont">&#xf00cc;</div>
+				  <div class="menu">
+				    <div class="item">提交新闻</div>
+				    <div class="item"> 个人信息 </div>
+				    <a href="/isignout" class="item"> 退出登录</a>
+				  </div>
+				</div>
+				<div class="avatar">
+					<a href="#"><img src="/img/<%= user.avatar %>"></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="main mid">
+		<form enctype="multipart/form-data" method="post" name="a-f" id="a-f" action="/news"></form>
+		<div class="tit">
+			<input type="text" name="title" id='title' form="a-f" required autofocus placeholder="文章题目">
+		</div>
+		 <div class="field required cate">
+			<label>新闻类型:</label>
+			<select class="ui compact selection dropdown" id="categories" form='a-f' name="categories">
+				<option value="top-stories">头条</option>
+				<option value="polity">政事</option>
+				<option value="sport">体育</option>
+			</select>
+		</div>
+		<div class="field required news-p">
+	        <label>新闻图片:</label>
+	        <div class="news-pic">
+	        	选择文件
+	        	<input type="file" name="news_pic" form='a-f' id="news-pic">
+	        </div>
+     	</div>
+		<div class="p-h">
+			<label>出版社:</label>
+			<input type="text" name="publish_house" form='a-f' id="publish_house" required placeholder="出版社">
+		</div>
+		<div class="content">
+			<textarea name="content" form='a-f'></textarea>
+			<div class="pre-view">
+				
+			</div>
+		</div>
+	</div>
+	<footer>
+		<a href="#" class="btn">
+			提交新闻
+		</a>
+	</footer>
+
+
+<script src="https://cdn.bootcss.com/showdown/1.5.4/showdown.js"></script>
+<script src="/js/desktop/create.js"></script>
+<%- include('footer') %>

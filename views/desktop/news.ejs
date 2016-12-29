@@ -1,0 +1,495 @@
+<%- include('header') %>
+	<link rel="stylesheet" href="/css/desktop/login.css">
+	<link rel="stylesheet" href="/css/desktop/style.css">
+	<title>news</title>
+</head>
+<body>
+	<header>
+
+		<div class="banner n_b mid">
+			<div class="logo border_r">
+				<img src="/img/news_logo.png">
+			</div>		
+				<% if (user) { %>
+					<div class="ui dropdown">
+				<% } %>
+				<a href="#" class="login border_r login_btn login-b">
+				<i class="iconfont">&#xe6a0;</i><% if(!user) { %><i>登录</i> <% } %>
+				</a>
+				<% if (user) { %>
+					<div class="menu">
+				    <a href="/news/create" class="item">提交文章</a>
+				    <a href="/inews" class="item">个人信息</a>
+				    <a href="/isignout" class="item"> 退出登录 </a>
+				  </div>
+				</div>
+				<% } %>
+			</a>
+			<div class="banner_nav border_r">
+				<ul>
+					<li class="border_r"><a href="#">新闻</a></li>
+					<li class="border_r"><a href="#">头条</a></li>
+					<li class="border_r sport"><a href="#">运动</a></li>
+					<li class="border_r police to_more"><a href="#">政事</a></li>
+					<li class="border_r entertain to_more"><a href="#">娱乐</a></li>
+					<li class="border_r movic to_more"><a href="#">电影</a></li>
+					<li class="border_r weather to_more"><a href="#">天气</a></li>
+					<li class="more_li"><a href="#12">更多</a></li>
+				</ul>
+			</div>
+			<div class="search">
+
+				<form action="" name="search_news"></form>
+				<div class="ui search">
+
+					<div class="ui icon input">
+					    <input class="prompt" type="text" placeholder="输入你要搜索的新闻标题" form="search_news">
+					    <a class="search_icon icon iconfont">&#xe618;</a>
+					</div>
+				  	<div class="results"></div>
+
+				</div>
+
+			</div>
+		</div>
+	</header>
+
+	<div class="more_container">
+		<div class="m-c mid">
+			<h2>更多</h2>
+			<div class="m_list">
+				<ul class="clearfix">
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+					<li><a href="#">新闻</a></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<nav>
+		<div class="nav mid">
+			<h1>新闻网</h1>		
+		</div>
+		<div class="nav_list_c">
+			<ul class="nav_list mid">
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+				<li><a class="link_active" href="#">新闻</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="main">
+
+		<div class="top_stories_w1 clearfix mid">
+			<div class="top_w1">
+				<div class="tit">
+					<h1>
+						w1标题w1标题
+					</h1>
+					<div class="excerpt">
+						摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘
+					</div>
+					<div class="time">
+						2016/11/11
+					</div>
+				</div>
+				<div class="pic">
+					<img src="img/1.jpg">
+				</div>
+			</div>
+			
+			<section class="ad">
+				<div class="section">
+					<div class="tit clearfix">
+						<h3>广告title</h3>
+					</div>
+					<ul>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+					</ul>
+				</div>
+			</section>
+		
+		</div>
+
+		<div class="section_card top_stories_w0 mid">
+			<div class="news-card">
+				<div class="pic">
+					<img src="img/1.jpg">
+				</div>
+				<div class="tit">
+					<h3>
+						标题标题标题标题标题标题标题标题标题标题标题标题
+					</h3>
+				</div>
+				<div class="excerpt">
+					摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+					摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+					摘要摘要摘要摘要摘要摘
+				</div>
+				<div class="time">
+					2016/11/11
+				</div>
+			</div>
+			<div class="news-card">
+				<div class="pic">
+					<img src="img/1.jpg">
+				</div>
+				<div class="tit">
+					<h3>
+						标题标题标题标题标题标题标题标题标题标题标题标题
+					</h3>
+				</div>
+				<div class="excerpt">
+					摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+				</div>
+				<div class="time">
+					2016/11/11
+				</div>
+			</div>
+			<div class="news-card">
+				<div class="pic">
+					<img src="img/1.jpg">
+				</div>
+				<div class="tit">
+					<h3>
+						标题标题标题标题标题标题标题标题标题标题标题标题
+					</h3>
+				</div>
+				<div class="excerpt">
+					摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+				</div>
+				<div class="time">
+					2016/11/11
+				</div>
+			</div>
+			<div class="news-card">
+				<div class="pic">
+					<img src="img/1.jpg">
+				</div>
+				<div class="tit">
+					<h3>
+						标题标题标题标题标题标题标题标题标题标题标题标题
+					</h3>
+				</div>
+				<div class="excerpt">
+					摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+				</div>
+				<div class="time">
+					2016/11/11
+				</div>
+			</div>
+
+		</div>
+
+		<div class="news_sport_c mid">
+			<div class="n_sport clearfix">
+				<h2>
+					运动
+				</h2>
+				<div class="card_c">
+					<div class="section_card">
+						<div class="news-card">
+							<div class="pic">
+								<img src="img/1.jpg">
+							</div>
+							<div class="tit">
+								<h3>
+									标题标题标题标题标题标题标题标题标题标题标题标题
+								</h3>
+							</div>
+							<div class="excerpt">
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘
+							</div>
+							<div class="time">
+								2016/11/11
+							</div>
+						</div>
+						<div class="news-card">
+							<div class="pic">
+								<img src="img/1.jpg">
+							</div>
+							<div class="tit">
+								<h3>
+									标题标题标题标题标题标题标题标题标题标题标题标题
+								</h3>
+							</div>
+							<div class="excerpt">
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘
+							</div>
+							<div class="time">
+								2016/11/11
+							</div>
+						</div>
+						<div class="news-card">
+							<div class="pic">
+								<img src="img/1.jpg">
+							</div>
+							<div class="tit">
+								<h3>
+									标题标题标题标题标题标题标题标题标题标题标题标题
+								</h3>
+							</div>
+							<div class="excerpt">
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘
+							</div>
+							<div class="time">
+								2016/11/11
+							</div>
+						</div>
+						<div class="news-card">
+							<div class="pic">
+								<img src="img/1.jpg">
+							</div>
+							<div class="tit">
+								<h3>
+									标题标题标题标题标题标题标题标题标题标题标题标题
+								</h3>
+							</div>
+							<div class="excerpt">
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要摘摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘要摘要摘要摘要要摘要摘要摘
+								摘要摘要摘要摘要摘要摘
+							</div>
+							<div class="time">
+								2016/11/11
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ad_sec">
+					<ul>
+						<li>
+							<img src="img/1.jpg">
+							<h3>标题标题标题标题标题标题</h3>
+						</li>
+						<li>
+							<img src="img/1.jpg">
+							<h3>标题标题标题标题标题标题标题标题标题标题题标题标题标题标题标题标题题标题标题标题标题标题标题</h3>
+						</li>
+						<li>
+							<img src="img/1.jpg">
+							<h3>标题标题</h3>
+						</li>
+						<li>
+							<img src="img/1.jpg">
+							<h3>标题标题</h3>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>		
+
+		<div class="news-section clearfix mid">
+			<div class="n_s">
+
+				<div class="section">
+					<div class="tit clearfix">
+						<h3>今日头条title</h3>
+					</div>
+					<ul>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+					</ul>
+				</div>
+
+
+				
+				<div class="section">
+					<div class="tit clearfix">
+						<h3>今日头条title</h3>
+					</div>
+					<ul>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+					</ul>
+				</div>
+				
+				<div class="section">
+					<div class="tit clearfix">
+						<h3>今日头条title</h3>
+					</div>
+					<ul>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+						<li>今日头条今日头条今日头条</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer>
+		<div class="footer mid">
+			<h2>
+				页脚标题
+			</h2>
+			<ul class="foot_ul">
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚<%= error %></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="copy_r">
+				©copy-right 2016/12/12 海源
+			</div>
+		</div>
+	</footer>
+
+	<div id="masker"></div>
+
+	<div class="login_frame">
+		<div class="login_box login">
+			<div class="l_h center">
+				登录新闻网
+			</div>
+			<div class="tips center">
+				全球新闻网唯一定位，锁定新闻网
+			</div>
+			<div class="l_con">
+				<form action="" method="post" name="login-f"></form>
+				<ul>
+					<li>
+						<label class="username">用户名</label>
+						<div class="login-input">
+							<input type="text" class="usern" name="username" form="login-f">
+						</div>
+					</li>
+					<li>
+						<label class="password">密&nbsp;码</label>
+						<div class="login-input">
+							<input type="password" class="pwd" name="password" form="login-f">
+						</div>
+					</li>
+					<li>
+						<div class="btn login-btn">
+							登录
+						</div>
+					</li>
+					<li>
+						<label class="alert">
+							
+						</label>
+					</li>
+				</ul>
+			</div>
+			<div class="login_foot">
+				<ul>
+					<li><a href="#">忘了密码?</a></li>
+					<li><a href="/signup" class="signup-link">用户注册</a></li>
+					<li><a href="#">意见反馈</a></li>
+				</ul>
+			</div class="login_foot">
+			<a href="#" class="close"></a>
+		</div>
+	</div>
+
+<% if(user) { %>
+<script>
+	!function(){
+		$('.login')
+		.removeClass('login-b')
+		.addClass('user-m');
+	}();
+</script>
+<% } %>
+<script src="/js/desktop/main.js"></script>
+
+<%- include('footer') %>

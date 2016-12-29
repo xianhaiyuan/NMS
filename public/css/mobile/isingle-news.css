@@ -79,7 +79,7 @@ a:hover{
     line-height: 1rem;
     height: 1rem;
     display: inline-block;
-    background: url(../img/news_logo.png) no-repeat 0 0;
+    background: url(../../img/news_logo.png) no-repeat 0 0;
     background-size: 3rem 1rem;
     width: 3rem;
 }
@@ -197,11 +197,11 @@ a:hover{
     position: relative;
 }
 .inews_comment_btn a:nth-child(1):before{
-	background: url(../img/sp-commentSlide.png) no-repeat -44px -8px;
+	background: url(../../img/sp-commentSlide.png) no-repeat -44px -8px;
 	background-size: 200px auto;
 }
 .inews_comment_btn a:nth-child(2):before{
-	background: url(../img/sp-commentSlide.png) no-repeat -86px -6px;
+	background: url(../../img/sp-commentSlide.png) no-repeat -86px -6px;
 	background-size: 200px auto;
 }
 

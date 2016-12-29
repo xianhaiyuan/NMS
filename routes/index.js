@@ -1,15 +1,16 @@
 module.exports = function(app){
 	
-	// app.get('/', function(req, res){
-	// 	res.redirect('/inews');
-	// });
-	app.use('/isignup', require('./isignup'));
-	app.use('/isignin', require('./isignin'));
-	app.use('/isignout', require('./isignout'));
-	app.use('/inews', require('./inews'));
+	app.get('/', function(req, res){
+		res.redirect('/news');
+	});
+	app.use('/isignup', require('./mobile/isignup'));
+	app.use('/isignin', require('./mobile/isignin'));
+	app.use('/isignout', require('./mobile/isignout'));
+	app.use('/inews', require('./mobile/inews'));
 
-	// app.use('/news', require('/news'));
-	// app.use('/signup' require('./signup'));
+	app.use('/news', require('./desktop/news'));
+	app.use('/signup', require('./desktop/signup'));
+	app.use('/user', require('./desktop/user'));
 	// app.use('/signin', require('./signin'));
 	// app.use('/signout', require('./isignout'));
 	

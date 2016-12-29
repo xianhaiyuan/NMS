@@ -8,5 +8,18 @@ module.exports = {
 		.find({username: username})
 		.addCreatedAt()
 		.exec();
+	},
+	update: function update(user){
+		return User.update(
+		{
+			"_id": user._id
+		},
+		{
+			$set: {
+				"name": user.name,
+				"resume": user.resume,
+				"avatar": user.avatar
+			}
+		});
 	}
 }

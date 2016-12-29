@@ -1,6 +1,6 @@
 <%- include('iheader') %>
 
-<link rel="stylesheet" href="/css/isignin.css">
+<link rel="stylesheet" href="/css/mobile/isignin.css">
 <title>nms-isignin</title>
 </head>
 <body>
@@ -44,6 +44,7 @@
           password: $(".password").val()
         })
         .done(function(data){
+          console.log(data.err)
           if (data.err) {
             $(".err").html(data.err);
           }
@@ -53,12 +54,13 @@
           console.log(data);
         })
         .fail(function(err){
+          $('.err').html(err);
           console.log(err);
         });
       }
       $(".login").click(login);
         
-      $(".password").keydown(function(e){
+      $(".pwd").keydown(function(e){
           if (e.keyCode == 13) {
             login();
           }

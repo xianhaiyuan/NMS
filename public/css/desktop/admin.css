@@ -1,0 +1,38 @@
+.news-tit, label{
+	line-height: 38px;
+}
+.news-status ul li{
+	height: 67px;
+}
+.permission{
+	float: right;
+	height: 100%;
+}
+.permission .field, .permission label, .permission .selection{
+	float: left;
+}
+.permission label{
+	font-size: 1rem;
+	margin-right: 1rem;
+	font-weight: 400;
+
+}
+.news-status .ui.dropdown{
+	height: 100%;
+	margin-top: 0;
+}
+.submit{
+	float: left;
+	height: 100%;
+	padding: .5rem;
+	margin-left: 1rem;
+	color: #fff;
+	background-color: rgba(255,0,0,.8);
+	border-radius: 3px;
+	border: 1px solid #f00;
+	transition: all 0.8s ease;
+}
+.submit:hover{
+	color: #fff;
+	background-color: rgba(255,0,0,1);
+}

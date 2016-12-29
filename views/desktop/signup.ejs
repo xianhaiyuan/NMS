@@ -1,0 +1,196 @@
+<%- include('header') %>
+<link rel="stylesheet" href="/css/desktop/signup.css">
+
+
+</head>
+<body>
+	<header>
+		<div class="header clearfix">
+			<div class="logo">
+				<h1><a href="#">新闻网</a></h1><h3>个人信息</h3>
+			</div>
+		</div>
+	</header>
+
+	<div class="main clearfix">
+
+		<div class="signup_frame">
+
+			<div class="login_box signup clearfix">
+				<div class="l_h center">
+					注册新用户
+				</div>
+				<div class="l_con">
+					<form action="" method="post" class="login-f" enctype="multipart/form-data">
+					<ul class="clearfix">
+						<li>
+							<label class="username">用户名</label>
+							<div class="login-input">
+								<input type="text" id="username"  name="username">
+							</div>
+						</li>
+						<li>
+							<label class="password">密&nbsp;码</label>
+							<div class="login-input">
+								<input type="password" id="password"  name="password">
+							</div>
+						</li>
+						<li>
+							<label class="re-password">重复密码</label>
+							<div class="login-input">
+								<input type="password" id="repassword"  name="repassword">
+							</div>
+						</li>
+						<li>
+							<label class="name">姓&nbsp;名</label>
+							<div class="login-input">
+								<input type="text" id="realname" value=""  name="name">
+							</div>
+						</li>
+						<li >
+							<div class="field required">
+						        <label>性别</label>
+						        <select class="ui compact selection dropdown" id="gender" name="gender">
+						          <option value="m">男</option>
+						          <option value="f">女</option>
+						          <option value="x">保密</option>
+						        </select>
+					      </div>
+						<li>
+							<div class="field required">
+						        <label>头像</label>
+						        <div class="avat">选择文件
+						        	<input type="file" id="avatar" name="avatar" class="avatar">
+						        </div>
+					        </div>
+						</li>
+						<li >
+							 <div class="field required">
+						        <label>个人简介</label>
+						        <textarea name="resume" class="resume" rows="5" v-model="user.resume" required id="resume"></textarea>
+						    </div>
+						</li>
+						<li>
+							<div class="signup-btn btn">
+								注册
+							</div>
+						</li>
+						<li>
+							<div class="err alert">
+								<%= error %>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="close"></a>
+			</div>
+		</div>
+		</form>
+	</div>
+
+	<footer>
+	<div class="footer mid">
+		<h2>
+			页脚标题
+		</h2>
+		<ul class="foot_ul">
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+			<li>
+				<ul>
+					<li>页脚页脚</li>
+					<li>页脚页脚</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="copy_r">
+			©copy-right 2016/12/12 海源
+		</div>
+	</div>
+</footer>
+
+<script>
+	!function(){
+		  var submit_button = $(".signup-btn");
+		  submit_button.click(function(){
+		  var username = $("#username");
+		  var password = $("#password");
+		  var repassword = $("#repassword");
+		  var name = $("#realname");
+		  console.log(name.value);
+		  var gender = $("#gender");
+		  var resume = $("#resume");
+		  
+		  if (!(username.val().length >= 1 && username.val().length <=10)){
+		    $(".err").html('用户名请限制在 1-10 个字符。');
+		    return false;
+		  }
+		  if(password.val().length < 3){
+		    $(".err").html('密码至少 3 个字符');
+		    return false;
+		  }
+		  if(password.val() !== repassword.val()){
+		    $(".err").html('两次输入密码不一致');
+		    return false;
+		  }
+		  if (!(name.val().length >= 1 && name.val().length <=10)){
+		    $(".err").html('姓名请限制在 1-10 个字符。');
+		    return false;
+		  }
+		  if(['m', 'f', 'x'].indexOf(gender.val()) === -1){
+		    $(".err").html('性别只能是男,女或保密');
+		    return false;
+		  }
+		  if($("#avatar").val() === ""){
+		    $(".err").html('缺少头像');
+		    return false;
+		  }
+		  if(!(resume.val().length >= 1 && resume.val().length <=30)){
+		    $(".err").html('个人简介请限制在 1-30 个字符'); 
+		    return false;
+		  }
+		   $("form").submit();
+		});
+	}()
+
+</script>
+
+<%- include('footer') %>

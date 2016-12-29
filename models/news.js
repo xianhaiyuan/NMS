@@ -43,7 +43,7 @@ module.exports = {
 	},
 	getNewsById: function getNewsById(newsid){
 		return News
-		.findOne({_id: newsid,permission: 'y'})
+		.findOne({_id: newsid})
 		.populate({path: 'author_id', model: 'User'})
 		.addCreatedAt()
 		.addCommentsCount()

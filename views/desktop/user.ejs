@@ -1,0 +1,167 @@
+<%- include('header') %>
+<link rel="stylesheet" href="/css/desktop/user.css">
+<title>user</title>
+</head>
+<body>
+	<header>
+		<div class="header clearfix">
+			<div class="logo">
+				<h1><a href="/news">新闻网</a></h1><h3>个人信息</h3>
+			</div>
+			<div class="user">
+				<div class="ui dropdown">
+				  <div class="iconfont">&#xf00cc;</div>
+				  <div class="menu">
+				    <a href="/news/create" class="item">提交新闻</a>
+				    <a class="item"> 个人信息 </a>
+				    <a href="/isignout" class="item"> 退出登录</a>
+				  </div>
+				</div>
+				<div class="avatar">
+					<a href="#"><img src="/img/<%= user.avatar %>"></a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<div class="main">
+		<div class="u-c mid clearfix">
+			<div class="sec-c">
+				<div class="sec">
+					<div class="tit">
+						常规设置
+					</div>
+					<ul>
+						<li><a href="#">个人档案 </a></li>
+						<li><a href="#">文章提交情况</a></li>
+						<li><a href="#">个性名片</a></li>
+						<li><a href="#">专栏设置</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="user-c">
+				<form enctype="multipart/form-data" method="post" name="userinfo" action="" id="userinfo"></form>
+				<div class="tit">
+					常规设置
+				</div>
+				<ul class="clearfix">
+					<li>
+						<div class="username">
+							<label>姓名:</label>
+							<input type="text" id="name" name="name" value="<%= user.name %>" form="userinfo">
+						</div>
+					</li>
+					<li>
+						<div class="avatar-c">
+					        <label>头像:</label>
+					        <div class="avatar-pic">
+					        	选择文件
+					        	<input type="file" id="avatar" name="avatar" form="userinfo">
+					        </div>
+				     	</div>
+					</li>
+					<li>
+						<div class="resume">
+					        <label>个人简介:</label>
+					        <textarea name="resume" id="resume" rows="5" form="userinfo"><%= user.resume %></textarea>
+				      </div>
+					</li>
+				</ul>
+				<div class="btn">
+					保存设置
+					<input type="submit" id="submit" name="submit" form="userinfo">
+				</div>
+				<div class="err"></div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="footer mid">
+			<h2>
+				页脚标题
+			</h2>
+			<ul class="foot_ul">
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>页脚页脚</li>
+						<li>页脚页脚</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="copy_r">
+				©copy-right 2016/12/12 海源
+			</div>
+		</div>
+	</footer>
+	
+</body>
+
+
+
+
+
+<script>
+	!function(){
+		$('.ui.dropdown').dropdown();
+		$('#submit').click(function(){
+			var name = $('#name');
+			var avatar = $('#avatar');
+			var resume = $('#resume');
+			if (!(name.val().length >= 1 && name.val().length <=10)){
+		    $(".err").html('姓名请限制在 1-10 个字符。');
+		    return false;
+		  }
+	/*	  if($("#avatar").val() === ""){
+		    $(".err").html('缺少头像');
+		    return false;
+		  } */
+		  if(!(resume.val().length >= 1 && resume.val().length <=30)){
+		    $(".err").html('个人简介请限制在 1-30 个字符'); 
+		    return false;
+		  }
+		  $('#userinfo').submit();
+		});
+	}()
+</script>
+<%- include('footer') %>

@@ -3,8 +3,8 @@ var router = express.Router();
 var sha1 = require('sha1');
 
 
-var userModel = require('../models/users');
-var checkNotLogin = require('../middlewares/check').checkNotLogin;
+var userModel = require('../../models/users');
+var checkNotLogin = require('../../middlewares/check').checkNotLogin;
 router.get('/' ,checkNotLogin, function(req, res, next){
 	res.render('mobile/isignin');
 });
