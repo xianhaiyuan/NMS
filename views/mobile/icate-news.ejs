@@ -189,6 +189,8 @@
 				single_news['<%= news.title %>'] = '<%= news._id %>';
 			<% });} %>
 
+			$('.ui.dropdown').dropdown();
+
 
 			$('.search_icon').click(function(){
 				console.log(single_news[$('.prompt').val()]);

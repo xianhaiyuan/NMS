@@ -561,6 +561,7 @@ nav{
 .ad_sec img{
 	width: var(--ad_sec_img-w);
 	float: left;
+	height: 80px;
 }
 
 .ad_sec h3{
