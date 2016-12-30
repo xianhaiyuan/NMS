@@ -465,5 +465,13 @@ footer{
 	padding-top: 1rem;
 	border-top: 1px solid #fff;
 }
+.copy_r a{
+	color: #fff;
+	transition: all .8s ease;
+}
+
+.copy_r a:hover{
+	color: #e53d3d;
+}
 
 /*footer-style*/
