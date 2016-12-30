@@ -12,9 +12,9 @@ router.get('/', function(req, res, next){// GET /news 所有用户或者特定�
 	//此处可以跳转到某个用户的文章
 	Promise.all([
 			PostModel.getNewses(),
-			PostModel.getNewsByType_w0_limit8('top-stories'),
-			PostModel.getNewsByType_w1_limit8('top-stories'),
-			PostModel.getNewsByType_w0_limit8('sport')
+			PostModel.getNewsByType_w_n_limit_n('top-stories', 0, 8),
+			PostModel.getNewsByType_w_n_limit_n('top-stories', 1, 8),
+			PostModel.getNewsByType_w_n_limit_n('sport', 0, 8)
 		])
 	.then(function(result){
 			var newses = result[0];
@@ -82,7 +82,7 @@ router.get('/cate/:newsCategories', function(req, res, next){
 	var categories = req.params.newsCategories;
 	Promise.all([
 			PostModel.getNewsByCategories(categories),
-			PostModel.getNewsByType_w1_limit8(categories),
+			PostModel.getNewsByType_w_n_limit_n(categories, 1, 8),
 			PostModel.getNewses(),
 		])
 		.then(function(result){
@@ -99,7 +99,7 @@ router.get('/:newsID', function(req, res, next){ // GET /news/:postId 单独一�
 	Promise.all([
 			PostModel.getNewsById(newsID),
 			CommentModel.getComments(newsID),
-			PostModel.getNewsByType_w0_limit8('top-stories'),
+			PostModel.getNewsByType_w_n_limit_n('top-stories', 0, 8),
 			PostModel.incPv(newsID)
 		])
 	.then(function(result){

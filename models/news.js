@@ -93,7 +93,7 @@ module.exports = {
 		.contentToHtml()
 		.exec();
 	},
-	getNewses_limit_8: function getNewses_limit_8(author_id){
+	getNewses_limit_n: function getNewses_limit_n(author_id, count){
 		var query = {};
 		if (author_id) {
 			query.author_id = author_id;
@@ -101,7 +101,7 @@ module.exports = {
 		query.permission = 'y';
 		return News
 		.find(query)
-		.limit(8)
+		.limit(count)
 		.populate({path: 'author_id', model: 'User'})
 		.sort({_id: -1})
 		.addCreatedAt()
@@ -109,29 +109,15 @@ module.exports = {
 		.contentToHtml()
 		.exec();
 	},
-	getNewsByType_w0_limit8: function getNewsByType_w0(categories){
+	getNewsByType_w_n_limit_n: function getNewsByType_w_n_limit_n(categories, w, count){
 		var query = {
 		};
 		query.categories = categories;
-		query.weight = 0;
+		query.weight = w;
 		query.permission = 'y';
 		return News
 		.find(query)
-		.limit(8)
-		.populate({path: 'author_id', model: 'User'})
-		.sort({_id: -1})
-		.addCreatedAt()
-		.contentToHtml()
-		.exec();
-	},
-	getNewsByType_w1_limit8: function getNewsByType_w1(categories){
-		var query = {};
-		query.categories = categories;
-		query.weight = 1;
-		query.permission = 'y';
-		return News
-		.find(query)
-		.limit(8)
+		.limit(count)
 		.populate({path: 'author_id', model: 'User'})
 		.sort({_id: -1})
 		.addCreatedAt()

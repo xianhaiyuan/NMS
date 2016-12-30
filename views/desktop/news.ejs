@@ -111,26 +111,27 @@
 
 		<div class="top_stories_w1 clearfix mid">
 			<div class="top_w1">
-				
+				<% if (top_stories_w0[0]) { %>
 				<div class="tit">
 					<h1>
-						<a href="/news/<%= top_stories_w1[0]._id %>">
-							<%= top_stories_w1[0].title %>
+						<a href="/news/<%= top_stories_w0[0]._id %>">
+							<%= top_stories_w0[0].title %>
 						</a>
 					</h1>
 					<div class="excerpt">
 
-						<%= top_stories_w1[0].except %>
+						<%= top_stories_w0[0].except %>
 					</div>
 					<div class="time">
-						<%= top_stories_w1[0].created_at %>
+						<%= top_stories_w0[0].created_at %>
 					</div>
 				</div>
-				<a href="/news/<%= top_stories_w1[0]._id %>" class="pic" >
+				<a href="/news/<%= top_stories_w0[0]._id %>" class="pic" >
 					<div >
-						<img src="/img/<%= top_stories_w1[0].news_pic %>">
+						<img src="/img/<%= top_stories_w0[0].news_pic %>">
 					</div>
 				</a>
+				<% } %>
 			</div>
 			
 			<section class="ad">
@@ -150,75 +151,79 @@
 		
 		</div>
 
+		<% if (top_stories_w1[0]) { %>
 		<div class="section_card top_stories_w0 mid">
-			<% for (var i = 1; i < top_stories_w1.length; i++) { %>
+			
+			<%top_stories_w1.forEach(function(ns){ %>
 				<div class="news-card">
 					<div class="pic">
-						<img src="/img/<%= top_stories_w1[i].news_pic %>">
+						<img src="/img/<%= ns.news_pic %>">
 					</div>
 					<div class="tit">
 						<h3>
-							<%= top_stories_w1[i].title %>
+							<%= ns.title %>
 						</h3>
 					</div>
 					<div class="excerpt">
-						<%= top_stories_w1[i].except %>
+						<%= ns.except %>
 					</div>
 					<div class="time">
-						<%= top_stories_w1[i].created_at %>
+						<%= ns.created_at %>
 					</div>
 				</div>
-		<%	}  %>
+		<%	}) %>
+		 
 
 		</div>
+		<% } %>
 
 		<div class="news_sport_c mid">
 			<div class="n_sport clearfix">
+			<% if (sport_newses_w1[0]) { %>
 				<h2>
 					体育
 				</h2>
+			<% } %>
 				<div class="card_c">
 					<div class="section_card">
-						<% for (var i = 0; i < 1; i++) { 
-							if (sport_newses_w0[0]) {%>
+						<% sport_newses_w1.forEach(function(n){ %>
 							<div class="news-card">
 								<div class="pic">
-									<img src="/img/<%= sport_newses_w0[i].news_pic %>">
+									<img src="/img/<%= n.news_pic %>">
 								</div>
-								<a href="/news/<%= sport_newses_w0[i]._id %> " class="news-card-a">
+								<a href="/news/<%= n._id %> " class="news-card-a">
 								<div class="tit">
 									<h3>
-										<%= sport_newses_w0[i].title %>
+										<%= n.title %>
 									</h3>
 								</div>
 								<div class="excerpt">
-									<%= sport_newses_w0[i].except %>
+									<%= n.except %>
 								</div>
 								<div class="time">
-									<%= sport_newses_w0[i].created_at %>
+									<%= n.created_at %>
 								</div>
 								</a>
 							</div>
 						
-						<% } 
-						}%>
-					</div>
-				</div>
+					<% }) %>
+				    </div>
+			    </div>
+				<% if (sport_newses_w0[0]) { %>
 				<div class="ad_sec">
-					<ul>
-						<% for (var i = 0; i < 4; i++) { 
-							if (sport_newses_w0[i]) {%>
-							<a href="/news/<%= sport_newses_w0[i]._id %>">
+					<ul class="clearfix">
+						<% sport_newses_w0.forEach(function(n){ %>
+							<a href="/news/<%= n._id %>">
 							<li>
-								<img src="/img/<%= sport_newses_w0[i].news_pic %>">
-								<h3><%= sport_newses_w0[i].title %></h3>
+								<img src="/img/<%= n.news_pic %>">
+								<h3><%= n.title %></h3>
 							</li>
 							</a>
-						<% }
-						} %>
+						<% }) %>
 
 					</ul>
 				</div>
+				<% } %>
 			</div>
 			
 		</div>		
