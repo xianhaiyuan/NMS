@@ -36,6 +36,7 @@ time, mark, audio, video {
 	--paddingNormal: .5rem;
 
 	--h2: 2rem;
+	--h1: 2.2rem;
 }
 
 @media screen and (min-width:1024px) and  (max-width:1367px){
@@ -443,7 +444,7 @@ nav{
 }
 
 .top_stories_w1 .tit h1{
-	font-size: 2.4rem;
+	font-size: calc(var(--h2) - var(--fontScale));
 	margin-bottom: .5rem;
 }
 

@@ -316,7 +316,7 @@
 		.removeClass('login-b')
 		.addClass('user-m');
 		$('#comment-btn').click(function(){
-			var url = '/news/' + $('#comment-btn').attr('newsid') + '/comment';
+			var url = '/news/' + $('#comment-btn').attr('newsid') + '/comment'  ;
 			$.post(url,{
 				content: $('#com-content').val()
 			})

@@ -157,7 +157,7 @@
 			<%top_stories_w1.forEach(function(ns){ %>
 				<div class="news-card">
 					<div class="pic">
-						<img src="/img/<%= ns.news_pic %>">
+						<a href="/news/<%= ns._id %>"><img src="/img/<%= ns.news_pic %>"> </a>
 					</div>
 					<div class="tit">
 						<h3>

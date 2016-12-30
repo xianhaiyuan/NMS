@@ -190,8 +190,8 @@ router.post('/:newsID/comment', checkLogin_Ajax, function(req, res, next){ // PO
 		content: content
 	};
 	CommentModel.create(comment).then(function(){
-		req.flash('success', '留言成功');
-		res.send('suc');
+		// req.flash('success', '留言成功');
+		res.redirect('back');
 	})
 	.catch(next);
 });
