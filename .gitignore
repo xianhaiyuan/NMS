@@ -6,3 +6,4 @@ coverage
 *.sh
 node_modules
 .sass-cache
+logs
