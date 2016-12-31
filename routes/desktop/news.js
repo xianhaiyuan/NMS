@@ -180,7 +180,7 @@ router.get('/:newsID/icomment', function(req, res, next){
 		.catch(next);
 });
 
-router.post('/:newsID/comment', checkLogin_Ajax, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
+router.post('/:newsID/comment', checkLogin, function(req, res, next){ // POST /news/:postId/comment 创建一条留言
 	var author_id = req.session.user._id;
 	var newsID = req.params.newsID;
 	var content = req.fields.content;
@@ -190,8 +190,7 @@ router.post('/:newsID/comment', checkLogin_Ajax, function(req, res, next){ // PO
 		content: content
 	};
 	CommentModel.create(comment).then(function(){
-		// req.flash('success', '留言成功');
-		res.redirect('back');
+		res.send('suc');
 	})
 	.catch(next);
 });

@@ -16,7 +16,7 @@ module.exports = {
 	checkLogin_Ajax: function(req, res, next){
 		if(!req.session.user){
 			req.flash('error', '未登陆');
-			return res.redirect('back');
+			return res.send('signout');
 		}
 		next();
 	},
